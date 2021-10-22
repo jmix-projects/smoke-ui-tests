@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://emailSending.caption">
+    <layout>
+        <textField id="subjectField" caption="msg://emailsubject" required="true"/>
+        <button id="sendEmail" caption="Send Email"/>
+    </layout>
+</window>

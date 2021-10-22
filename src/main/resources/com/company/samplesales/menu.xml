@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="charts" caption="msg://com.company.samplesales/menu_config.charts" insertAfter="bpm">
+        <item screen="sales_BlankScreenXychart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenxychart/blankScreenXychart.caption"/>
+        <item screen="sales_BlankScreenSerialchart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenserialchart/blankScreenSerialchart.caption"/>
+        <item screen="sales_BlankScreenPiechart"
+              caption="msg://com.company.samplesales.screen.charts.blank_screen_piechart/blankScreenPiechart.caption"/>
+        <item screen="sales_BlankScreenFunnelchart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenfunnelchart/blankScreenFunnelchart.caption"/>
+        <item screen="sales_BlankScreenAngularGaugechart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenangulargaugechart/blankScreenAngularGaugechart.caption"/>
+        <item screen="sales_BlankScreenRadarchart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenradarchart/blankScreenRadarchart.caption"/>
+        <item screen="sales_BlankScreenStockchart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenstockchart/blankScreenStockchart.caption"/>
+        <item screen="sales_BlankScreenGanttchart"
+              caption="msg://com.company.samplesales.screen.charts.blankscreenganttchart/blankScreenGanttchart.caption"/>
+        <item screen="sales_BlankScreen"
+              caption="msg://com.company.samplesales.screen.charts.blank/blankScreen.caption"/>
+        <item screen="sales_BlankScreenDatabindingapi"
+              caption="msg://com.company.samplesales.screen.charts.blankscreendatabindingapi/blankScreenDatabindingapi.caption"/>
+        <item screen="sales_Diagramfromentity"
+              caption="msg://com.company.samplesales.screen.charts.diagramfromentity/diagramFromEntity.caption"/>
+        <item screen="sales_Diagramfromdataprovider"
+              caption="msg://com.company.samplesales.screen.charts.diagramfromdataprovider/diagramFromDataProvider.caption"/>
+        <item screen="sales_Chartsincrementalupdating"
+              caption="msg://com.company.samplesales.screen.charts.chartsincrementalupdating/chartsIncrementalUpdating.caption"/>
+        <item screen="sales_Diagramjson" caption="msg://com.company.samplesales.screen.charts.diagramjson/diagramjson.caption"/>
+    </menu>
+    <menu id="maps" caption="msg://com.company.samplesales/menu_config.maps" insertAfter="charts">
+        <item screen="sales_GeoPoint.browse"
+              caption="msg://com.company.samplesales.screen.maps.geopoint/geoPointBrowse.menu"/>
+        <item screen="sales_GeoPolyline.browse"
+              caption="msg://com.company.samplesales.screen.maps.geopolyline/geoPolylineBrowse.menu"/>
+        <item screen="sales_GeoPolygon.browse"
+              caption="msg://com.company.samplesales.screen.maps.geopolygon/geoPolygonBrowse.menu"/>
+        <item screen="sales_WMSLayer.browse"
+              caption="msg://com.company.samplesales.screen.maps.wmslayer/WMSLayerBrowse.menu"/>
+        <item screen="sales_ImageLayer.browse"
+              caption="msg://com.company.samplesales.screen.maps.imagelayer/imageLayerBrowse.menu"/>
+    </menu>
+    <menu id="addonsScreens" caption="msg://com.company.samplesales/menu_config.addonsScreens" insertAfter="maps">
+        <item screen="sales_Creatingpivottable"
+              caption="msg://com.company.samplesales.creatingpivottable/creatingPivotTable.caption"/>
+        <item screen="sales_SearchPerson.browse"
+              caption="msg://com.company.samplesales.screen.searchperson/searchPersonBrowse.menu"/>
+        <item screen="sales_DynamicAttrPerson.browse"
+              caption="msg://com.company.samplesales.screen.dynamicattrperson/dynamicAttrPersonBrowse.menu"/>
+        <item screen="sales_BlankScreenDashboard"
+              caption="msg://com.company.samplesales.screen.blankscreendashboard/blankScreenDashboard.caption"/>
+        <item screen="sales_Grapesjs" caption="msg://com.company.samplesales.screen.grapesjs/grapesjs.caption"/>
+        <item screen="sales_EmailSending"
+              caption="msg://com.company.samplesales.screen.emailsending/emailSending.caption"/>
+        <item screen="sales_EntityWithFile.browse"
+              caption="msg://com.company.samplesales.screen.entitywithfile/entityWithFileBrowse.menu"/>
+        <item screen="sales_RestScreen" caption="msg://com.company.samplesales.screen.rest/restScreen.caption"/>
+    </menu>
+    <menu id="application" caption="msg://com.company.samplesales/menu.application" insertBefore="administration">
+        <item screen="sales_User.browse" caption="msg://com.company.samplesales.screen.user/UserBrowse.caption"/>
+        <item screen="sales_Customer.browse"
+              caption="msg://com.company.samplesales.screen.customer/customerBrowse.caption"/>
+        <item screen="sales_Person.browse" caption="msg://com.company.samplesales.screen.person/personBrowse.menu"/>
+    </menu>
+</menu-config>
