@@ -4,6 +4,7 @@ package io.jmix.tests.ui.test.smoke
 import com.codeborne.selenide.Selenide
 import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.Label
+import io.jmix.masquerade.component.SideMenu
 import io.jmix.tests.ui.menu.Menus
 import io.jmix.tests.ui.screen.addonscreen.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
@@ -25,6 +26,7 @@ import io.jmix.tests.ui.screen.application.customer.CustomerBrowse
 import io.jmix.tests.ui.screen.application.customer.CustomerEditor
 import io.jmix.tests.ui.screen.bpm.ModelerScreen
 import io.jmix.tests.ui.screen.bpm.ProcessDefinitionBrowse
+import io.jmix.tests.ui.screen.charts.ChartScreen
 import io.jmix.tests.ui.screen.dashboard.DashboardBrowse
 import io.jmix.tests.ui.screen.dashboard.DashboardEditor
 import io.jmix.tests.ui.screen.imap.ImapConfigurationBrowse
@@ -129,6 +131,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         loginAsAdmin()
         maximizeWindowSize()
 
+        checkCRUDActions()
         checkEmailSendingScreen()
         checkBPM()
         checkCharts()
@@ -145,9 +148,8 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         checkExportsScreen()
         checkMultitenancy()
         checkLDAP()
-        checkCRUDActions()
-        checkREST()
         checkImap()
+        checkREST()
         checkSearch()
         checkTranslations()
 
@@ -192,7 +194,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             Selenide.sleep(2000)
             restField.setValue("")
         }
-
+        closeTab()
     }
 
     static void checkSearch() {
@@ -245,6 +247,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             Selenide.sleep(3000)
             closeResultTab()
         }
+        closeTab()
     }
 
     static void checkCRUDActions() {
@@ -283,7 +286,6 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             checkRecordIsNotDisplayed(customerEditedName, CUSTOMERS_TABLE_J_TEST_ID)
         }
         closeTab()
-
     }
 
     static void checkLDAP() {
@@ -384,7 +386,6 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             checkRecordIsNotDisplayed(dashboardName, DASHBOARDS_TABLE_J_TEST_ID)
         }
         closeTab()
-
     }
 
     static void checkImap() {
@@ -540,65 +541,40 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         $j(UnsavedChangesBPMDialog).with {
             clickButton(doNotSave)
         }
+        closeTab()
     }
 
     static void checkCharts() {
-        $j(MainScreen).openChartScreen(Menus.PIE_CHART_SCREEN)
-        checkSelenideElementByJtestId(PIE3D_CHART_J_TEST_ID)
-        closeTab()
+        def map = [[Menus.PIE_CHART_SCREEN, PIE3D_CHART_J_TEST_ID],
+                   [Menus.SERIAL_SCREEN, SERIAL_CHART_J_TEST_ID],
+                   [Menus.FUNNEL_CHART_SCREEN, FUNNEL_CHART_J_TEST_ID],
+                   [Menus.ANGULAR_GAUGE_CHART_SCREEN, ANGULAR_GAUGE_CHART_J_TEST_ID],
+                   [Menus.RADAR_CHART_SCREEN, RADAR_CHART_J_TEST_ID],
+                   [Menus.STOCK_CHART_SCREEN, STOCK_CHART_J_TEST_ID],
+                   [Menus.GANTT_CHART_SCREEN, GANTT_CHART_J_TEST_ID],
+                   [Menus.DATABINDING_API_CHART_SCREEN, DATABINDING_CHART_J_TEST_ID],
+                   [Menus.DIAGRAM_FROM_DATA_PROVIDER_CHART_SCREEN, CHART_J_TEST_ID],
+                   [Menus.GAUGE_CHART_SCREEN, GAUGE_CHART_J_TEST_ID],
+                   [Menus.DIAGRAM_FROM_ENTITY_CHART_SCREEN, CHART_J_TEST_ID],
+                   [Menus.DIAGRAM_FROM_JSON_CHART_SCREEN, DIAGRAM_FROM_JSON_CHART_J_TEST_ID]
+        ]
 
-        $j(MainScreen).openChartScreen(Menus.SERIAL_SCREEN)
-        checkSelenideElementByJtestId(SERIAL_CHART_J_TEST_ID)
-        closeTab()
+        map.each {
+            $j(MainScreen).openChartScreen(it.get(0) as SideMenu.Menu<ChartScreen>)
+            checkSelenideElementByJtestId(it.get(1) as String)
+            sleep(1000)
+            closeTab()
+        }
 
         $j(MainScreen).openChartScreen(Menus.XY_CHART_SCREEN)
         checkSelenideElementByClass("jmix-amcharts-chart")
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.FUNNEL_CHART_SCREEN)
-        checkSelenideElementByJtestId(FUNNEL_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.ANGULAR_GAUGE_CHART_SCREEN)
-        checkSelenideElementByJtestId(ANGULAR_GAUGE_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.RADAR_CHART_SCREEN)
-        checkSelenideElementByJtestId(RADAR_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.STOCK_CHART_SCREEN)
-        checkSelenideElementByJtestId(STOCK_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.GANTT_CHART_SCREEN)
-        checkSelenideElementByJtestId(GANTT_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.DATABINDING_API_CHART_SCREEN)
-        checkSelenideElementByJtestId(DATABINDING_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.DIAGRAM_FROM_DATA_PROVIDER_CHART_SCREEN)
-        checkSelenideElementByJtestId(CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.GAUGE_CHART_SCREEN)
-        checkSelenideElementByJtestId(GAUGE_CHART_J_TEST_ID)
-        closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.DIAGRAM_FROM_ENTITY_CHART_SCREEN)
-        checkSelenideElementByJtestId(CHART_J_TEST_ID)
+        sleep(1000)
         closeTab()
 
         $j(MainScreen).openChartScreen(Menus.INCREMENTAL_UPDATE_CHART_SCREEN)
         checkSelenideElementByJtestId(INCREMENTAL_CHART_J_TEST_ID)
+        Selenide.sleep(5000)
         closeTab()
-
-        $j(MainScreen).openChartScreen(Menus.DIAGRAM_FROM_JSON_CHART_SCREEN)
-        checkSelenideElementByJtestId(DIAGRAM_FROM_JSON_CHART_J_TEST_ID)
-        closeTab()
-
     }
 
     static void checkMaps() {
@@ -666,8 +642,6 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(cancelButton)
         }
         closeTab()
-
     }
-
 
 }
