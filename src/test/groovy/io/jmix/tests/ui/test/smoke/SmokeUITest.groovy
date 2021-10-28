@@ -36,6 +36,7 @@ import io.jmix.tests.ui.screen.reports.dialog.*
 import io.jmix.tests.ui.screen.reports.editor.ReportEditor
 import io.jmix.tests.ui.screen.system.dialog.ConfirmationDialog
 import io.jmix.tests.ui.screen.system.dialog.UnsavedChangesBPMDialog
+import io.jmix.tests.ui.screen.system.login.LoginScreen
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.UiHelper
@@ -155,6 +156,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
 
     }
 
+    /*
+    * Checks Russians translations add-on
+    */
     static void checkTranslations() {
         $j(MainScreen).logout()
         loginAsAdminRus()
@@ -171,9 +175,12 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         Selenide.sleep(2000)
         closeTab()
         $j(MainScreen).logout()
-        loginAsAdmin()
+        $j(LoginScreen).loginWithLocale('English')
     }
 
+    /*
+    * Checks REST add-on
+    */
     static void checkREST() {
         HttpUriRequest request = new HttpPost(REQUEST_URL)
         request.addHeader(AUTHORIZATION_HEADER_NAME, AUTHORIZATION_HEADER_VALUE)
@@ -197,6 +204,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Search add-on
+     */
     static void checkSearch() {
         $j(MainScreen).openSearchPersonBrowse()
         $j(SearchPersonBrowse).with {
@@ -250,6 +260,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks CRUD actions
+     */
     static void checkCRUDActions() {
         $j(MainScreen).openCustomerBrowse()
         $j(CustomerBrowse).with {
@@ -288,6 +301,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks LDAP add-on
+     */
     static void checkLDAP() {
         $j(MainScreen).logout()
         loginAsCustomUser(LDAP_USER_LOGIN, LDAP_USER_PASSWORD)
@@ -296,6 +312,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         loginAsAdmin()
     }
 
+    /*
+     * Checks Email sending add-on
+     */
     static void checkEmailSendingScreen() {
         $j(MainScreen).openEmailSendingScreen()
         def subject = getUniqueName("Email subject")
@@ -303,7 +322,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
             fillTextField(subjectField, subject)
             clickButton(sendEmail)
         }
-        Selenide.sleep(1000)
+        Selenide.sleep(4000)
         $j(MainScreen).openEmailHistoryScreen()
         $j(EmailHistoryScreen).with {
             checkRecordIsDisplayed(subject, SENDING_MESSAGE_TABLE_J_TEST_ID)
@@ -312,6 +331,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Multitenancy add-on
+     */
     static void checkMultitenancy() {
         $j(MainScreen).openTenantBrowse()
         $j(TenantBrowse).with {
@@ -338,6 +360,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Grid Exports add-on
+     */
     static void checkExportsScreen() {
         $j(MainScreen).openCustomerBrowse()
         $j(CustomerBrowse).with {
@@ -347,6 +372,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Pivot table add-on
+     */
     static void checkPivotTable() {
         $j(MainScreen).openPivotTableScreen()
         checkSelenideElementByJtestId(PIVOT_TABLE_J_TEST_ID)
@@ -356,12 +384,18 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks GrapeJS add-on
+     */
     static void checkGrapeJS() {
         $j(MainScreen).openGrapeJSScreen()
         checkSelenideElementByJtestId(HTML_EDITOR_J_TEST_ID)
         closeTab()
     }
 
+    /*
+     * Checks Dashboards add-on
+     */
     static void checkDashboard() {
         $j(MainScreen).openDashboardBrowse()
         $j(DashboardBrowse).with {
@@ -388,6 +422,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks IMAP add-on
+     */
     static void checkImap() {
         $j(MainScreen).openImapConfigurationBrowse()
         $j(ImapConfigurationBrowse).with {
@@ -416,6 +453,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Email templates add-on
+     */
     static void checkEmailTemplates() {
         $j(MainScreen).openEmailTemplateBrowse()
 
@@ -452,6 +492,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Data Tools add-on
+     */
     static void checkDatatools() {
         $j(MainScreen).openEntityInspectorBrowse()
 
@@ -463,11 +506,17 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Dynamic attributes add-on
+     */
     static void checkDynamicAttributes() {
         $j(MainScreen).openDynamicAttributeBrowse()
         closeTab()
     }
 
+    /*
+     * Checks Sessions add-on
+     */
     static void checkSessions() {
         $j(MainScreen).openUserSessionBrowse()
         $j(UserSessionBrowse).with {
@@ -476,6 +525,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Audit add-on
+     */
     static void checkAudit() {
         $j(MainScreen).openEntityLogBrowse()
         $j(EntityLogBrowse).with {
@@ -503,6 +555,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks BPM add-on
+     */
     static void checkBPM() {
         $j(MainScreen).openModelerScreen()
         $j(ModelerScreen).with {
@@ -544,6 +599,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Charts add-on
+     */
     static void checkCharts() {
         def map = [[Menus.PIE_CHART_SCREEN, PIE3D_CHART_J_TEST_ID],
                    [Menus.SERIAL_SCREEN, SERIAL_CHART_J_TEST_ID],
@@ -577,6 +635,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         closeTab()
     }
 
+    /*
+     * Checks Maps add-on
+     */
     static void checkMaps() {
         [Menus.GEO_POINT_BROWSE, Menus.GEO_POLYLINE_BROWSE, Menus.GEO_POLYGON_BROWSE, Menus.IMAGE_LAYER_BROWSE, Menus.WMS_LAYER_BROWSE].each {
             $j(MainScreen).openGeoBrowse(it)
@@ -586,6 +647,9 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         }
     }
 
+    /*
+     * Checks Reports add-on
+     */
     static void checkReport() {
 
         def reportBasicName = "Report for entity \"" + CUSTOMER_ENTITY_NAME + "\""
