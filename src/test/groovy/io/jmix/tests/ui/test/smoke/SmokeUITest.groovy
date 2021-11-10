@@ -22,6 +22,8 @@ import io.jmix.tests.ui.screen.administration.jmx.OperationResultDialog
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantEditor
+import io.jmix.tests.ui.screen.administration.webdav.DocumentVersionDialog
+import io.jmix.tests.ui.screen.administration.webdav.WebDAVDocumentBrowse
 import io.jmix.tests.ui.screen.application.customer.CustomerBrowse
 import io.jmix.tests.ui.screen.application.customer.CustomerEditor
 import io.jmix.tests.ui.screen.bpm.ModelerScreen
@@ -125,6 +127,12 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
     public static final String SHOW_ALL_RECORDS_MODE = "Show all records"
     public static final String REPORT_CREATING_TYPE_USING_WIZARD = "Using wizard"
     public static final String SENT_STATUS = "Sent"
+    public static final String WEBDAV_DOCUMENTS_TABLE_J_TEST_ID = "webdavDocumentsTable"
+    public static final String WEBDAV_DOCUMENT_VERSIONS_TABLE_J_TEST_ID = "webdavDocumentVersionsTable"
+    public static final String FILE_PATH = "src/main/resources/helloworld.txt"
+    public static final String FILENAME = "helloworld.txt"
+    public static final String SHOW_VERSION_BTN_J_TEST_ID = "showVersion"
+    public static final String DOCUMENT_IS_NOT_LOCKED_NOTIFICATION_CAPTION = "The document is not locked"
 
     @Test
     @DisplayName("Smoke test")
@@ -152,9 +160,52 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         checkImap()
         checkSearch()
         checkTranslations()
-
+        checkWebDAV()
     }
 
+    static void checkWebDAV() {
+        $j(MainScreen).openWebDAVDocumentBrowse()
+        def fileName = getUniqueName(FILENAME)
+        def fileNamePath = "src/main/resources/" + fileName
+        $j(WebDAVDocumentBrowse).with {
+            clickUploadButton(FILE_PATH, fileNamePath)
+            checkRecordIsDisplayed(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
+            $j(Button, SHOW_VERSION_BTN_J_TEST_ID).shouldBe(VISIBLE, ENABLED).shouldHave(caption("v1"))
+            selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
+            clickButton(manageVersionsBtn)
+        }
+
+        $j(DocumentVersionDialog).with {
+            checkRecordIsDisplayed(fileName, WEBDAV_DOCUMENT_VERSIONS_TABLE_J_TEST_ID)
+            clickButton(ok)
+        }
+        $j(WebDAVDocumentBrowse).with {
+            selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
+            clickButton(removeBtn)
+        }
+        $j(ConfirmationDialog).with {
+            confirmChanges()
+        }
+        checkNotification(DOCUMENT_IS_NOT_LOCKED_NOTIFICATION_CAPTION)
+        $j(WebDAVDocumentBrowse).with {
+            selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
+            clickButton(lockBtn)
+            clickButton(removeBtn)
+        }
+        $j(ConfirmationDialog).with {
+            confirmChanges()
+        }
+        $j(WebDAVDocumentBrowse).with {
+            checkRecordIsNotDisplayed(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
+        }
+        closeTab()
+        cleanTempFile(fileNamePath)
+    }
+
+    private static void cleanTempFile(String fileNamePath) {
+        File file = new File(fileNamePath)
+        file.delete()
+    }
     /*
     * Checks Russians translations add-on
     */
