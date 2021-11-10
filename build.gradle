@@ -16,7 +16,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-    mavenCentral() 
+    mavenCentral()
     maven {
         url 'https://nexus.jmix.io/repository/public'
     }
@@ -44,6 +44,7 @@ dependencies {
 
     implementation 'io.jmix.datatools:jmix-datatools-starter'
     implementation 'io.jmix.datatools:jmix-datatools-ui-starter'
+
     implementation 'io.jmix.dashboards:jmix-dashboards-starter'
     implementation 'io.jmix.dashboards:jmix-dashboards-ui-starter'
     themes 'io.jmix.dashboards:jmix-dashboards-ui'
@@ -51,10 +52,15 @@ dependencies {
     implementation 'io.jmix.reports:jmix-reports-starter'
     implementation 'io.jmix.reports:jmix-reports-ui-starter'
     implementation 'io.jmix.reports:jmix-reports-rest-starter'
+
     implementation 'io.jmix.emailtemplates:jmix-emailtemplates-starter'
     implementation 'io.jmix.emailtemplates:jmix-emailtemplates-ui-starter'
+
     implementation "io.jmix.ldap:jmix-ldap-starter"
 
+    implementation 'io.jmix.webdav:jmix-webdav-starter'
+    implementation 'io.jmix.webdav:jmix-webdav-rest-starter'
+    implementation 'io.jmix.webdav:jmix-webdav-ui-starter'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -69,29 +75,41 @@ dependencies {
     implementation "io.jmix.ui:jmix-charts-starter"
     themes "io.jmix.ui:jmix-ui-themes"
     implementation "io.jmix.ui:jmix-ui-themes"
+
     widgets "io.jmix.ui:jmix-pivot-table-widgets"
     implementation "io.jmix.ui:jmix-pivot-table-starter"
+
     implementation "io.jmix.maps:jmix-maps-ui-starter"
     widgets "io.jmix.maps:jmix-maps-ui-widgets"
     implementation "io.jmix.maps:jmix-maps-starter"
+
     implementation "io.jmix.ui:jmix-ui-export-starter"
+
     implementation "io.jmix.bpm:jmix-bpm-starter"
     implementation "io.jmix.bpm:jmix-bpm-ui-starter"
+
     implementation "io.jmix.dynattr:jmix-dynattr-starter"
     implementation "io.jmix.dynattr:jmix-dynattr-ui-starter"
+
     implementation 'io.jmix.search:jmix-search-starter'
     implementation 'io.jmix.search:jmix-search-ui-starter'
+
     implementation 'org.springframework.boot:spring-boot-starter-quartz'
 
     implementation "io.jmix.audit:jmix-audit-starter"
     implementation "io.jmix.audit:jmix-audit-ui-starter"
     implementation 'io.jmix.sessions:jmix-sessions-starter'
+
     implementation "io.jmix.translations:jmix-translations-ru"
+
     implementation "io.jmix.grapesjs:jmix-grapesjs-starter"
+
     implementation "io.jmix.email:jmix-email-starter"
     implementation "io.jmix.email:jmix-email-ui-starter"
+
     implementation "io.jmix.imap:jmix-imap-ui-starter"
     implementation "io.jmix.imap:jmix-imap-starter"
+
     implementation "io.jmix.multitenancy:jmix-multitenancy-ui-starter"
     implementation "io.jmix.multitenancy:jmix-multitenancy-starter"
 
@@ -118,40 +136,41 @@ dependencies {
     testRuntimeOnly 'org.postgresql:postgresql:42.2.19'
 }
 
-    task testUi(type: Test) {
-        useJUnitPlatform()
+task testUi(type: Test) {
+    useJUnitPlatform()
 
-        filter {
-            includeTestsMatching "io.jmix.tests.ui.*"
-        }
-
-        if (rootProject.hasProperty('jmix.tests.ui.baseHost')) {
-            systemProperty 'jmix.tests.ui.baseHost', rootProject['jmix.tests.ui.baseHost']
-        } else {
-            systemProperty 'jmix.tests.ui.baseHost', 'http://host.docker.internal'
-        }
-
-        if (rootProject.hasProperty('selenide.browser')) {
-            systemProperty 'selenide.browser', rootProject['selenide.browser']
-        }
-
-        if (rootProject.hasProperty('webdriver.chrome.driver')) {
-            systemProperty 'webdriver.chrome.driver', rootProject['webdriver.chrome.driver']
-        }
-
-        if (rootProject.hasProperty('webdriver.gecko.driver')) {
-            systemProperty 'webdriver.gecko.driver', rootProject['webdriver.gecko.driver']
-        }
-
-        def envProperties = rootProject.getProperties()
-        for (def entry in envProperties.entrySet()) {
-            if (String.valueOf(entry.key).startsWith('selenide.')) {
-                systemProperty(String.valueOf(entry.key), entry.value)
-            }
-        }
+    filter {
+        includeTestsMatching "io.jmix.tests.ui.*"
     }
 
-    test.dependsOn testUi
+    if (rootProject.hasProperty('jmix.tests.ui.baseHost')) {
+        systemProperty 'jmix.tests.ui.baseHost', rootProject['jmix.tests.ui.baseHost']
+    } else {
+        systemProperty 'jmix.tests.ui.baseHost', 'http://host.docker.internal'
+    }
+
+    if (rootProject.hasProperty('selenide.browser')) {
+        systemProperty 'selenide.browser', rootProject['selenide.browser']
+    }
+
+    if (rootProject.hasProperty('webdriver.chrome.driver')) {
+        systemProperty 'webdriver.chrome.driver', rootProject['webdriver.chrome.driver']
+    }
+
+    if (rootProject.hasProperty('webdriver.gecko.driver')) {
+        systemProperty 'webdriver.gecko.driver', rootProject['webdriver.gecko.driver']
+    }
+
+    def envProperties = rootProject.getProperties()
+    for (def entry in envProperties.entrySet()) {
+        if (String.valueOf(entry.key).startsWith('selenide.')) {
+            systemProperty(String.valueOf(entry.key), entry.value)
+        }
+    }
+}
+
+test.dependsOn testUi
+
 compileWidgets {
     generate "com.company.samplesales.widgets.CustomWidgetSet"
 }
