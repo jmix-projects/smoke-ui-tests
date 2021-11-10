@@ -82,11 +82,7 @@ dependencies {
     implementation 'io.jmix.search:jmix-search-starter'
     implementation 'io.jmix.search:jmix-search-ui-starter'
     implementation 'org.springframework.boot:spring-boot-starter-quartz'
-    widgets "io.jmix.ui:jmix-charts-widgets"
-    widgets "io.jmix.ui:jmix-ui-widgets"
-    implementation "io.jmix.ui:jmix-charts-starter"
-    implementation "io.jmix.ui:jmix-pivot-table-starter"
-    widgets "io.jmix.ui:jmix-pivot-table-widgets"
+
     implementation "io.jmix.audit:jmix-audit-starter"
     implementation "io.jmix.audit:jmix-audit-ui-starter"
     implementation 'io.jmix.sessions:jmix-sessions-starter'
