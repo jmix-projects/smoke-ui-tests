@@ -150,7 +150,6 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         checkMultitenancy()
         checkLDAP()
         checkImap()
-        checkREST()
         checkSearch()
         checkTranslations()
 
@@ -180,6 +179,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
 
     /*
     * Checks REST add-on
+    * temporarily disabled, waiting for https://github.com/Haulmont/jmix-rest/issues/87
     */
     static void checkREST() {
         HttpUriRequest request = new HttpPost(REQUEST_URL)
