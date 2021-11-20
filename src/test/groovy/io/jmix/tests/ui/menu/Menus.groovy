@@ -19,6 +19,7 @@ import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
+import io.jmix.tests.ui.screen.administration.webdav.WebDAVDocumentBrowse
 import io.jmix.tests.ui.screen.application.customer.CustomerBrowse
 import io.jmix.tests.ui.screen.application.user.UserBrowse
 import io.jmix.tests.ui.screen.bpm.ModelerScreen
@@ -159,5 +160,7 @@ final class Menus {
     public static final SideMenu.Menu<EmailHistoryScreen> EMAIL_HISTORY_SCREEN =
             new SideMenu.Menu<>(EmailHistoryScreen, 'administration', 'email_SendingMessage.browse')
 
+    public static final SideMenu.Menu<WebDAVDocumentBrowse> WEBDAV_DOCUMENT_BROWSE =
+            new SideMenu.Menu<>(WebDAVDocumentBrowse, 'administration', 'webdav_WebdavDocument.browse')
 
 }

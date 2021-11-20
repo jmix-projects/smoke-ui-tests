@@ -168,7 +168,7 @@ class SmokeUITest extends BaseUiTest implements UiHelper {
         def fileName = getUniqueName(FILENAME)
         def fileNamePath = "src/main/resources/" + fileName
         $j(WebDAVDocumentBrowse).with {
-            clickUploadButton(FILE_PATH, fileNamePath)
+            uploadNewDocument(FILE_PATH, fileNamePath)
             checkRecordIsDisplayed(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
             $j(Button, SHOW_VERSION_BTN_J_TEST_ID).shouldBe(VISIBLE, ENABLED).shouldHave(caption("v1"))
             selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)

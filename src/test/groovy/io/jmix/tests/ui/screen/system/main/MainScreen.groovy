@@ -19,6 +19,7 @@ import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
+import io.jmix.tests.ui.screen.administration.webdav.WebDAVDocumentBrowse
 import io.jmix.tests.ui.screen.application.customer.CustomerBrowse
 import io.jmix.tests.ui.screen.application.user.UserBrowse
 import io.jmix.tests.ui.screen.bpm.ModelerScreen
@@ -145,4 +146,7 @@ class MainScreen extends Composite<MainScreen> {
         sideMenu.openItem(Menus.REST_SCREEN)
     }
 
+    WebDAVDocumentBrowse openWebDAVDocumentBrowse() {
+        sideMenu.openItem(Menus.WEBDAV_DOCUMENT_BROWSE)
+    }
 }
