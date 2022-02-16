@@ -1,4 +1,4 @@
-package io.jmix.tests.ui.test.utils
+package io.jmix.tests.ui.test.utils.helpers
 
 import com.codeborne.selenide.SelenideElement
 import com.codeborne.selenide.WebDriverRunner
@@ -6,6 +6,7 @@ import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.ComboBox
 import io.jmix.masquerade.component.Notification
 import io.jmix.masquerade.component.TextField
+import io.jmix.tests.ui.screen.system.dialog.ConfirmationDialog
 import org.openqa.selenium.Dimension
 
 import static com.codeborne.selenide.Selenide.$
@@ -102,10 +103,6 @@ trait UiHelper {
         selenideElement.click()
     }
 
-    static void maximizeWindowSize() {
-        WebDriverRunner.webDriver.manage().window().setSize(new Dimension(1920, 1080))
-    }
-
     static String getString(ArrayList<String> strings) {
         StringBuilder builder = new StringBuilder(strings.get(0))
         for (int i = 1; i < strings.size(); i++) {
@@ -117,6 +114,12 @@ trait UiHelper {
 
     static String getUniqueName(String baseString) {
         return baseString + getGeneratedString()
+    }
+
+    def clickYesInAConfirmationDialog() {
+        $j(ConfirmationDialog).with {
+            clickButton(yes)
+        }
     }
 
 }
