@@ -7,6 +7,7 @@ import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateEditor
 import static io.jmix.masquerade.Selectors.$j
 
 trait EmailTemplatesHelper extends UiHelper {
+    public static final String EMAIL_TEMPLATES_TABLE_J_TEST_ID = "emailTemplatesTable"
 
     void createTemplate(String tempname, tempcode){
         $j(EmailTemplateBrowse).with {
