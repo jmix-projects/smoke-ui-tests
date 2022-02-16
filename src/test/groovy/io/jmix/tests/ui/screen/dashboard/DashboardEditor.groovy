@@ -13,7 +13,7 @@ class DashboardEditor extends Composite<DashboardEditor> {
     @Wire
     TextField code
 
-    @Wire
-    Button okBtn
+    @Wire(path = "okBtn")
+    Button ok
 
 }

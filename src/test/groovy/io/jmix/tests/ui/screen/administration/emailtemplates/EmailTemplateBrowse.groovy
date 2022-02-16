@@ -4,7 +4,7 @@ import io.jmix.masquerade.Wire
 import io.jmix.masquerade.base.Composite
 import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.PopupButton
-import io.jmix.tests.ui.test.utils.TableActionsTrait
+import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
 
 import static io.jmix.masquerade.Conditions.ENABLED
 
@@ -12,6 +12,9 @@ class EmailTemplateBrowse extends Composite<EmailTemplateBrowse> implements Tabl
 
     @Wire
     PopupButton createBtn
+
+    @Wire
+    Button editBtn
 
     @Wire
     Button removeBtn

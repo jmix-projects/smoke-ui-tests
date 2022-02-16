@@ -1,4 +1,4 @@
-package io.jmix.tests.ui.test.utils
+package io.jmix.tests.ui.test.utils.traits
 
 import io.jmix.masquerade.component.Table
 

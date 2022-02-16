@@ -35,6 +35,12 @@ class ProcessDefinitionBrowse extends Composite<ProcessDefinitionBrowse> {
                 .shouldBe(VISIBLE)
     }
 
+    void checkRecordIsNotDisplayed(String s) {
+        processDefinitionsTable.shouldBe(VISIBLE)
+                .getRow(byText(s))
+                .shouldNotBe(VISIBLE)
+    }
+
     void checkButtons(Condition condition) {
         openInModelerBtn.shouldBe(condition)
         startProcessBtn.shouldBe(condition)

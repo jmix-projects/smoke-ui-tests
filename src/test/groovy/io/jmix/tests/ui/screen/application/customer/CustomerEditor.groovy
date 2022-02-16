@@ -18,4 +18,10 @@ class CustomerEditor extends Composite<CustomerEditor> {
 
     @Wire(path = "commitAndCloseBtn")
     Button ok
+
+    void selectCustomerGrade(String grade) {
+        gradeField.openOptionsPopup()
+                .select(grade)
+    }
+
 }

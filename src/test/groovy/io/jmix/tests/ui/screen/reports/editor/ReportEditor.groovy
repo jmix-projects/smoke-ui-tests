@@ -6,7 +6,7 @@ import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.ComboBox
 import io.jmix.masquerade.component.TabSheet
 import io.jmix.masquerade.component.TextField
-import io.jmix.tests.ui.test.utils.TableActionsTrait
+import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
 
 class ReportEditor extends Composite<ReportEditor> implements TableActionsTrait {
 

@@ -5,7 +5,7 @@ import io.jmix.masquerade.base.Composite
 import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.ComboBox
 import io.jmix.masquerade.component.Table
-import io.jmix.tests.ui.test.utils.TableActionsTrait
+import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
 
 import static io.jmix.masquerade.Conditions.VISIBLE
 import static io.jmix.masquerade.Conditions.value
