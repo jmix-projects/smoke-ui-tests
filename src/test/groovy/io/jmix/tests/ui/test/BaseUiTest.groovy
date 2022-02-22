@@ -32,6 +32,14 @@ abstract class BaseUiTest {
     }
 
     /**
+     * Login as Administrator with English locale
+     */
+    static void loginAsAdminEn() {
+        Selenide.open('/')
+        $j(LoginScreen).loginWithLocale('English')
+    }
+
+    /**
      * Login as custom user
      */
     static void loginAsCustomUser(String login, String password) {
@@ -48,7 +56,7 @@ abstract class BaseUiTest {
      */
     @BeforeAll
     static void beforeAll() {
-        loginAsAdmin()
+        loginAsAdminEn()
         maximizeWindowSize()
     }
 
