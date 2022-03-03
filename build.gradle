@@ -113,6 +113,17 @@ dependencies {
     implementation "io.jmix.multitenancy:jmix-multitenancy-ui-starter"
     implementation "io.jmix.multitenancy:jmix-multitenancy-starter"
 
+    implementation 'io.jmix.businesscalendar:jmix-businesscalendar-starter'
+    implementation 'io.jmix.businesscalendar:jmix-businesscalendar-ui-starter'
+
+    implementation 'io.jmix.notifications:jmix-notifications-starter'
+    implementation 'io.jmix.notifications:jmix-notifications-ui-starter'
+
+    implementation 'io.jmix.quartz:jmix-quartz-starter'
+
+    implementation 'io.jmix.appsettings:jmix-appsettings-starter'
+    implementation 'io.jmix.appsettings:jmix-appsettings-ui-starter'
+
     implementation('org.jsoup:jsoup') {
         version {
             strictly '1.11.2'
