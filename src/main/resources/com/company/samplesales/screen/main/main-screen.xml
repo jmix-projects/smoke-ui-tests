@@ -1,5 +1,6 @@
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://application.caption">
+        caption="msg://application.caption"
+        xmlns:ntf="http://jmix.io/schema/notifications/ui" >
 
     <layout>
         <cssLayout id="horizontalWrap"
@@ -22,6 +23,7 @@
                 <sideMenu id="sideMenu"
                           width="100%"
                           stylename="jmix-drawer-content"/>
+                <ntf:notificationsIndicator id="ntfIndicator"/>
                 <timeZoneIndicator id="timeZoneIndicator"
                                    align="MIDDLE_CENTER"/>
                 <cssLayout id="controlBox"

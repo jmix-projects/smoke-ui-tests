@@ -3,6 +3,7 @@ package io.jmix.tests.ui.test.utils.helpers
 import com.codeborne.selenide.SelenideElement
 import com.codeborne.selenide.WebDriverRunner
 import io.jmix.masquerade.component.Button
+import io.jmix.masquerade.component.CheckBox
 import io.jmix.masquerade.component.ComboBox
 import io.jmix.masquerade.component.Notification
 import io.jmix.masquerade.component.TextField
@@ -115,11 +116,21 @@ trait UiHelper {
     static String getUniqueName(String baseString) {
         return baseString + getGeneratedString()
     }
+    static String getBaseName(String baseString) {
+        return baseString
+    }
 
     def clickYesInAConfirmationDialog() {
         $j(ConfirmationDialog).with {
             clickButton(yes)
         }
+    }
+
+    static void setCheckbox(CheckBox checkbox, boolean value) {
+        checkbox
+                .shouldBe(VISIBLE)
+                .setChecked(value)
+        value ? checkbox.shouldBe(CHECKED) : checkbox.shouldNotBe(CHECKED)
     }
 
 }

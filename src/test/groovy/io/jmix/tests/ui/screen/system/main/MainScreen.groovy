@@ -16,6 +16,7 @@ import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBr
 import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
+import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
@@ -149,4 +150,9 @@ class MainScreen extends Composite<MainScreen> {
     WebDAVDocumentBrowse openWebDAVDocumentBrowse() {
         sideMenu.openItem(Menus.WEBDAV_DOCUMENT_BROWSE)
     }
+
+    NotificationBrowse openNotificationBrowse() {
+        sideMenu.openItem(Menus.NOTIFICATION_BROWSE)
+    }
+
 }

@@ -5,6 +5,7 @@
 package io.jmix.tests.ui.menu
 
 import io.jmix.masquerade.component.SideMenu
+import io.jmix.notificationsui.screen.inappnotification.InAppNotificationBrowse
 import io.jmix.tests.ui.screen.addonscreen.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
@@ -16,6 +17,7 @@ import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBr
 import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
+import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
@@ -162,5 +164,8 @@ final class Menus {
 
     public static final SideMenu.Menu<WebDAVDocumentBrowse> WEBDAV_DOCUMENT_BROWSE =
             new SideMenu.Menu<>(WebDAVDocumentBrowse, 'administration', 'webdav_WebdavDocument.browse')
+
+    public static final SideMenu.Menu<NotificationBrowse> NOTIFICATION_BROWSE =
+            new SideMenu.Menu<>(NotificationBrowse, 'administration', 'ntf_InAppNotification.browse')
 
 }
