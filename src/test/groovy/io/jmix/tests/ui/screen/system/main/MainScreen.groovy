@@ -11,6 +11,7 @@ import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
+import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
 import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBrowse
 import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
@@ -153,6 +154,10 @@ class MainScreen extends Composite<MainScreen> {
 
     NotificationBrowse openNotificationBrowse() {
         sideMenu.openItem(Menus.NOTIFICATION_BROWSE)
+    }
+
+    BusinessCalendarBrowse openBusinessCalendarBrowse() {
+        sideMenu.openItem(Menus.BUSINESS_CALENDAR_BROWSE)
     }
 
 }

@@ -5,13 +5,13 @@
 package io.jmix.tests.ui.menu
 
 import io.jmix.masquerade.component.SideMenu
-import io.jmix.notificationsui.screen.inappnotification.InAppNotificationBrowse
 import io.jmix.tests.ui.screen.addonscreen.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
+import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
 import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBrowse
 import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
@@ -167,5 +167,8 @@ final class Menus {
 
     public static final SideMenu.Menu<NotificationBrowse> NOTIFICATION_BROWSE =
             new SideMenu.Menu<>(NotificationBrowse, 'administration', 'ntf_InAppNotification.browse')
+
+    public static final SideMenu.Menu<BusinessCalendarBrowse> BUSINESS_CALENDAR_BROWSE =
+            new SideMenu.Menu<>(BusinessCalendarBrowse, 'administration', 'buscal_BusinessCalendarModel.browse')
 
 }

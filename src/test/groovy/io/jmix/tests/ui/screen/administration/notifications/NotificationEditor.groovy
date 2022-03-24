@@ -4,8 +4,8 @@ import com.codeborne.selenide.SelenideElement
 import io.jmix.masquerade.Wire
 import io.jmix.masquerade.base.Composite
 import io.jmix.masquerade.component.Button
-import io.jmix.masquerade.component.CheckBox
 import io.jmix.masquerade.component.ComboBox
+import io.jmix.masquerade.component.OptionsGroup
 import io.jmix.masquerade.component.TextField
 
 import static com.codeborne.selenide.Selenide.$
@@ -20,7 +20,7 @@ class NotificationEditor extends Composite<NotificationEditor> {
     ComboBox typeField
 
     @Wire
-    CheckBox channelsField
+    OptionsGroup channelsField
 
     @Wire
     TextField plainTextBodyField
@@ -36,6 +36,10 @@ class NotificationEditor extends Composite<NotificationEditor> {
         $j(TextField, byChain(byJTestId("recipientsField"), byClassName("v-textfield"))).setValue(recipient)
         SelenideElement element = $(byClassName("jmix-suggestionfield-item"))
         element.click()
+    }
+
+    void chooseChannelsField(String type) {
+        channelsField.select(type)
     }
 
 }
