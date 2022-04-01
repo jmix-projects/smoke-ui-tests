@@ -1,4 +1,4 @@
-package io.jmix.tests.ui.test.smoke.businesscalendars
+package io.jmix.tests.ui.test.smoke.crud.businesscalendars
 
 import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.businesscalendars.editor.BusinessCalendarEditor

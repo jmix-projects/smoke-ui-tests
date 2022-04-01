@@ -1,4 +1,4 @@
-package io.jmix.tests.ui.test.smoke.notifications
+package io.jmix.tests.ui.test.smoke.crud.notifications
 
 import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
 import io.jmix.tests.ui.screen.administration.notifications.NotificationEditor
