@@ -18,6 +18,7 @@ import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
+import io.jmix.tests.ui.screen.administration.quartzjobs.browse.QuartzJobsBrowse
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
@@ -170,5 +171,8 @@ final class Menus {
 
     public static final SideMenu.Menu<BusinessCalendarBrowse> BUSINESS_CALENDAR_BROWSE =
             new SideMenu.Menu<>(BusinessCalendarBrowse, 'administration', 'buscal_BusinessCalendarModel.browse')
+
+    public static final SideMenu.Menu<QuartzJobsBrowse> QUARTZ_JOBS_BROWSE =
+            new SideMenu.Menu<>(QuartzJobsBrowse, 'administration', 'quartz_JobModel.browse')
 
 }

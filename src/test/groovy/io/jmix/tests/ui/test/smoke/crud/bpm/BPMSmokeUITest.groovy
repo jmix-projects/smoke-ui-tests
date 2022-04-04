@@ -45,7 +45,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
 
         createAndDeployProcess(processId, processName)
 
-        checkNotification(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
+        checkNotificationCaption(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
 
         $j(MainScreen).openProcessDefinitionBrowse()
 
@@ -62,7 +62,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
         def processEditedId = getUniqueName(PROCESS_BASE_ID)
 
         createAndDeployProcess(processId, processName)
-        checkNotification(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
+        checkNotificationCaption(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
 
         $j(MainScreen).openProcessDefinitionBrowse()
 
@@ -83,7 +83,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
         }
 
         clickYesInAConfirmationDialog()
-        checkNotification(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
+        checkNotificationCaption(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
 
         $j(MainScreen).openProcessDefinitionBrowse()
 

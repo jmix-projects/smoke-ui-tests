@@ -18,6 +18,7 @@ import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
+import io.jmix.tests.ui.screen.administration.quartzjobs.browse.QuartzJobsBrowse
 import io.jmix.tests.ui.screen.administration.security.browser.RoleBrowse
 import io.jmix.tests.ui.screen.administration.session.UserSessionBrowse
 import io.jmix.tests.ui.screen.administration.tenants.TenantBrowse
@@ -158,6 +159,10 @@ class MainScreen extends Composite<MainScreen> {
 
     BusinessCalendarBrowse openBusinessCalendarBrowse() {
         sideMenu.openItem(Menus.BUSINESS_CALENDAR_BROWSE)
+    }
+
+    QuartzJobsBrowse openQuartzJobsBrowse() {
+        sideMenu.openItem(Menus.QUARTZ_JOBS_BROWSE)
     }
 
 }

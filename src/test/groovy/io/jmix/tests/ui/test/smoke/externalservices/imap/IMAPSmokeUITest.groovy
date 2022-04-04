@@ -41,7 +41,7 @@ class IMAPSmokeUITest extends BaseUiTest implements UiHelper {
             fillTextField(password, IMAP_PASSWORD)
             selectSSLTLSecureConnection()
             clickButton(checkConnectionBtn)
-            checkNotification(IMAP_SUCCESS_CONNECT_NOTIFICATION_TEXT)
+            checkNotificationCaption(IMAP_SUCCESS_CONNECT_NOTIFICATION_TEXT)
             jmixFlagTextField.shouldBe(VISIBLE, EDITABLE, REQUIRED)
             fillTextField(jmixFlagTextField, "test")
             clickButton(ok)

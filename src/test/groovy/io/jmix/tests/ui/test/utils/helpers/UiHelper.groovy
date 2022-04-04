@@ -31,7 +31,7 @@ trait UiHelper {
      * @param capt - expected caption
      * @param descr - expected description
      */
-    static void checkNotification(String capt, String descr) {
+    static void checkNotificationCaptionAndDescription(String capt, String descr) {
         $j(Notification).shouldBe(VISIBLE)
                 .shouldHave(caption(capt))
                 .shouldHave(description(descr))
@@ -43,9 +43,19 @@ trait UiHelper {
      * Checks Notification's appearing and caption
      * @param capt - expected caption
      */
-    static void checkNotification(String capt) {
+    static void checkNotificationCaption(String capt) {
         $j(Notification).shouldBe(VISIBLE)
-                .shouldHave(caption(capt))
+                .shouldHave(captionContains(capt))
+        $j(Notification).clickToClose()
+    }
+
+    /**
+     * Checks Notification's appearing and description
+     * @param descr - expected description
+     */
+    static void checkNotificationDescription(String descr) {
+        $j(Notification).shouldBe(VISIBLE)
+                .shouldHave(description(descr))
         $j(Notification).clickToClose()
     }
 
