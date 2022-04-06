@@ -10,6 +10,7 @@ import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
+import io.jmix.tests.ui.screen.administration.applicationsettings.ApplicationSettingsScreen
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
@@ -174,5 +175,8 @@ final class Menus {
 
     public static final SideMenu.Menu<QuartzJobsBrowse> QUARTZ_JOBS_BROWSE =
             new SideMenu.Menu<>(QuartzJobsBrowse, 'administration', 'quartz_JobModel.browse')
+
+    public static final SideMenu.Menu<ApplicationSettingsScreen> APPLICATION_SETTINGS_SCREEN =
+            new SideMenu.Menu<>(ApplicationSettingsScreen, 'administration', 'appset_appSettingsEntity.screen')
 
 }

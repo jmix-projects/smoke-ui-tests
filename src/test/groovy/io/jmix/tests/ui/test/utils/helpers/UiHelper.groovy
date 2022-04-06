@@ -1,14 +1,9 @@
 package io.jmix.tests.ui.test.utils.helpers
 
+import com.codeborne.selenide.Condition
 import com.codeborne.selenide.SelenideElement
-import com.codeborne.selenide.WebDriverRunner
-import io.jmix.masquerade.component.Button
-import io.jmix.masquerade.component.CheckBox
-import io.jmix.masquerade.component.ComboBox
-import io.jmix.masquerade.component.Notification
-import io.jmix.masquerade.component.TextField
+import io.jmix.masquerade.component.*
 import io.jmix.tests.ui.screen.system.dialog.ConfirmationDialog
-import org.openqa.selenium.Dimension
 
 import static com.codeborne.selenide.Selenide.$
 import static io.jmix.masquerade.Conditions.*
@@ -97,6 +92,15 @@ trait UiHelper {
         field.shouldBe(VISIBLE)
                 .shouldBe(EDITABLE)
                 .setValue(value)
+    }
+
+    /**
+     * Check value string in defined TextField
+     * @param textField - defined field
+     * @param str - expected value stirng
+     */
+    static void checkFilledTextField(TextField textField, String str) {
+        textField.shouldHave(Condition.value(str))
     }
 
     static void checkSelenideElementByJtestId(String jTestId) {

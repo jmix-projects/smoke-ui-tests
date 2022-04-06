@@ -10,6 +10,7 @@ import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
+import io.jmix.tests.ui.screen.administration.applicationsettings.ApplicationSettingsScreen
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
@@ -165,4 +166,7 @@ class MainScreen extends Composite<MainScreen> {
         sideMenu.openItem(Menus.QUARTZ_JOBS_BROWSE)
     }
 
+    ApplicationSettingsScreen openApplicationSettingsScreen() {
+        sideMenu.openItem(Menus.APPLICATION_SETTINGS_SCREEN)
+    }
 }
