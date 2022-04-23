@@ -5,7 +5,7 @@
 package io.jmix.tests.ui.menu
 
 import io.jmix.masquerade.component.SideMenu
-import io.jmix.tests.ui.screen.addonscreen.EmailSendingScreen
+import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen

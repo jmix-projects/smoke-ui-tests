@@ -1,4 +1,4 @@
-package io.jmix.tests.ui.screen.addonscreen
+package io.jmix.tests.ui.screen.addonscreen.email
 
 import io.jmix.masquerade.Wire
 import io.jmix.masquerade.base.Composite
@@ -8,8 +8,20 @@ import io.jmix.masquerade.component.TextField
 class EmailSendingScreen extends Composite<EmailSendingScreen> {
 
     @Wire
-    Button sendEmail
+    Button sync
 
     @Wire
-    TextField subjectField
+    Button async
+
+    @Wire
+    Button syncAttach
+
+    @Wire
+    Button syncMultiAttach
+
+    @Wire
+    Button send
+
+    @Wire
+    TextField subject
 }

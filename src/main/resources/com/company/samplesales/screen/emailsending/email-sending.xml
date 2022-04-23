@@ -2,7 +2,12 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://emailSending.caption">
     <layout>
-        <textField id="subjectField" caption="msg://emailsubject" required="true"/>
-        <button id="sendEmail" caption="Send Email"/>
+        <textField id="subject" caption="msg://subject"/>
+        <button id="sync" primary="false" caption="msg://sync.caption"/>
+        <button id="async" primary="false" caption="msg://async.caption"/>
+        <button id="send" primary="false" caption="msg://send.caption"/>
+        <button id="syncAttach" primary="false" caption="msg://syncAttach.caption"/>
+        <button id="syncMultiAttach" primary="false" caption="msg://syncMultiAttach.caption"/>
+
     </layout>
 </window>
