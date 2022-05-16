@@ -10,12 +10,16 @@ import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.helpers.UiHelper
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.MethodOrderer
+import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestMethodOrder
 
 import static com.codeborne.selenide.Selenide.$
 import static io.jmix.masquerade.Selectors.$j
 import static io.jmix.masquerade.Selectors.byClassName
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
 
     public static final String SENT_STATUS = "Sent"
@@ -36,6 +40,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String MULTI_ATTACHMENT_STRING = 'emailAttach.png;test.png;'
 
     @Test
+    @Order(2)
     @DisplayName(value = "Sends synchronized email without attachments")
     void syncManualEmailSending() {
         $j(MainScreen).openEmailSendingScreen()
@@ -43,7 +48,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
         $j(EmailSendingScreen).with {
             fillTextField(subject, emailSubject)
             clickButton(sync)
-            Selenide.sleep(4000)
+            Selenide.sleep(10000)
         }
 
         $j(MainScreen).openEmailHistoryScreen()
@@ -55,6 +60,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
+    @Order(4)
     @DisplayName(value = "Sends asynchronized email without attachments with manual running")
     void asyncManualEmailSending() {
         $j(MainScreen).openEmailSendingScreen()
@@ -77,7 +83,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
 
         $j(EmailSendingScreen).with {
             clickButton(send)
-            Selenide.sleep(4000)
+            Selenide.sleep(10000)
         }
         $j(MainScreen).openEmailHistoryScreen()
 
@@ -87,6 +93,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
+    @Order(5)
     @DisplayName(value = "Sends asynchronized email without attachments with scheduler")
     void asyncScheduleEmailSending() {
         $j(MainScreen).openEmailSendingScreen()
@@ -103,7 +110,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             checkByCellsRecordIsDisplayed(emailSubject, QUEUE_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(attemptsMade, '0')
-            Selenide.sleep(4000)
+            Selenide.sleep(80000)
             clickRefreshFilterButton()
 
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
@@ -113,6 +120,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
+    @Order(3)
     @DisplayName(value = "Resends an email")
     void resendEmail() {
         $j(MainScreen).openEmailSendingScreen()
@@ -149,6 +157,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
+        @Order(1)
     @DisplayName(value = "Downloads attachments from sent emails")
     void downloadAttachment() {
         $j(MainScreen).openEmailSendingScreen()
