@@ -1,5 +1,6 @@
 package io.jmix.tests.ui.test.smoke.crud.webdav
 
+import com.codeborne.selenide.Selenide
 import io.jmix.masquerade.component.Button
 import io.jmix.tests.ui.screen.administration.webdav.DocumentVersionDialog
 import io.jmix.tests.ui.screen.administration.webdav.WebDAVDocumentBrowse
@@ -69,12 +70,13 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
         $j(WebDAVDocumentBrowse).with {
             selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
             clickButton(removeBtn)
+            Selenide.sleep(1000)
         }
         $j(ConfirmationDialog).with {
             confirmChanges()
         }
 
-        checkNotification(DOCUMENT_IS_NOT_LOCKED_NOTIFICATION_CAPTION)
+        checkNotificationCaption(DOCUMENT_IS_NOT_LOCKED_NOTIFICATION_CAPTION)
     }
 
     @Test
@@ -87,6 +89,7 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
             selectRowInTableByText(fileName, WEBDAV_DOCUMENTS_TABLE_J_TEST_ID)
             clickButton(lockBtn)
             clickButton(removeBtn)
+            Selenide.sleep(1000)
         }
         $j(ConfirmationDialog).with {
             confirmChanges()
