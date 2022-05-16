@@ -1,9 +1,11 @@
 package io.jmix.tests.ui.screen.administration.audit
 
+import com.codeborne.selenide.SelenideElement
 import io.jmix.masquerade.Wire
 import io.jmix.masquerade.base.Composite
 import io.jmix.masquerade.component.*
 import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
+import org.openqa.selenium.Keys
 
 import java.time.Duration
 
@@ -120,7 +122,7 @@ class EntityLogBrowse extends Composite<EntityLogBrowse> implements TableActions
         value ? checkbox.shouldBe(CHECKED) : checkbox.shouldNotBe(CHECKED)
     }
 
-    void selectNameFromDropdown(String name) {
+    void selectNameFromFirstRageOfDropdown(String name) {
         entityNameField
                 .shouldBe(VISIBLE)
                 .openOptionsPopup()
@@ -191,4 +193,9 @@ class EntityLogBrowse extends Composite<EntityLogBrowse> implements TableActions
                 .sendKeys(ENTER)
     }
 
+    static void selectNameFromDropdown(String name) {
+        $j(TextField, byChain(byJTestId("entityNameField"), byClassName("v-filterselect-input"))).setValue(name)
+        SelenideElement element = $(byClassName("v-filterselect-input"))
+        element.sendKeys(Keys.ENTER)
+    }
 }
