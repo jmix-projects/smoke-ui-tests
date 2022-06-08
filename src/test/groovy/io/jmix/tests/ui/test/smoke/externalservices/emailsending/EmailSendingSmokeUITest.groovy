@@ -40,6 +40,44 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String MULTI_ATTACHMENT_STRING = 'emailAttach.png;test.png;'
 
     @Test
+    @Order(1)
+    @DisplayName(value = "Downloads attachments from sent emails")
+    void downloadAttachment() {
+        $j(MainScreen).openEmailSendingScreen()
+        $j(EmailSendingScreen) with {
+            fillTextField(subject, EMPTY_DOWNLOAD_STRING)
+            clickButton(sync)
+
+            fillTextField(subject, ONE_ATTACHMENT_STRING)
+            clickButton(syncAttach)
+
+            fillTextField(subject, MULTI_ATTACHMENTS_STRING)
+            clickButton(syncMultiAttach)
+        }
+        $j(MainScreen).openEmailHistoryScreen()
+        $j(EmailHistoryScreen) with {
+            Selenide.sleep(2000)
+
+            selectRowInTableByText(EMPTY_DOWNLOAD_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            clickButton(downloadAttachmentBtn)
+            checkNotificationCaption("Message has no attachments")
+
+            checkByCellsRecordIsDisplayed(ONE_ATTACHMENT_STRING, EMAIL_ATTACH_PNG, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            selectRowInTableByText(ONE_ATTACHMENT_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            clickButton(downloadAttachmentBtn)
+
+            checkByCellsRecordIsDisplayed(MULTI_ATTACHMENTS_STRING, MULTI_ATTACHMENT_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            selectRowInTableByText(MULTI_ATTACHMENTS_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            clickButton(downloadAttachmentBtn)
+
+            $j(EmailAttachmentDownloadDialog).with {
+                selectRowInTableByText(TEST_PNG, ATTACHMENTS_TABLE_J_TEST_ID)
+                clickButton(select)
+            }
+        }
+    }
+
+    @Test
     @Order(2)
     @DisplayName(value = "Sends synchronized email without attachments")
     void syncManualEmailSending() {
@@ -57,6 +95,43 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(datepart, "")
         }
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName(value = "Resends an email")
+    void resendEmail() {
+        $j(MainScreen).openEmailSendingScreen()
+
+        def emailSubject = getUniqueName(TEST_SYNC_BASE_STRING)
+
+        $j(EmailSendingScreen).with {
+            fillTextField(subject, emailSubject)
+            clickButton(sync)
+            Selenide.sleep(4000)
+        }
+        $j(MainScreen).openEmailHistoryScreen()
+
+        $j(EmailHistoryScreen).with {
+            checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
+            clickButton(resendEmailBtn)
+            $j(EmailResendDialog).with {
+                checkFilledTextField(emailTextField, TEST_TO_EMAIL_ADDRESS)
+                checkFilledTextField(ccTextField, TEST_CC_EMAIL_ADDRESS)
+                checkFilledTextField(bccTextField, TEST_BCC_EMAIL_ADDRESS)
+                clickButton(resendEmailBtn)
+            }
+            checkNotificationCaptionAndDescription("Sent!", "Message was successfully resent")
+            Selenide.sleep(3000)
+            clickRefreshFilterButton()
+            checkRecordCount(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID, 2)
+        }
+    }
+
+    private static void clickRefreshFilterButton() {
+        SelenideElement filterButton = $(byClassName("v-button-friendly"))
+        filterButton.click()
     }
 
     @Test
@@ -116,81 +191,6 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(attemptsMade, '1')
-        }
-    }
-
-    @Test
-    @Order(3)
-    @DisplayName(value = "Resends an email")
-    void resendEmail() {
-        $j(MainScreen).openEmailSendingScreen()
-
-        def emailSubject = getUniqueName(TEST_SYNC_BASE_STRING)
-
-        $j(EmailSendingScreen).with {
-            fillTextField(subject, emailSubject)
-            clickButton(sync)
-            Selenide.sleep(4000)
-        }
-        $j(MainScreen).openEmailHistoryScreen()
-
-        $j(EmailHistoryScreen).with {
-            checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            clickButton(resendEmailBtn)
-            $j(EmailResendDialog).with {
-                checkFilledTextField(emailTextField, TEST_TO_EMAIL_ADDRESS)
-                checkFilledTextField(ccTextField, TEST_CC_EMAIL_ADDRESS)
-                checkFilledTextField(bccTextField, TEST_BCC_EMAIL_ADDRESS)
-                clickButton(resendEmailBtn)
-            }
-            checkNotificationCaptionAndDescription("Sent!", "Message was successfully resent")
-            Selenide.sleep(3000)
-            clickRefreshFilterButton()
-            checkRecordCount(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID, 2)
-        }
-    }
-
-    private static void clickRefreshFilterButton() {
-        SelenideElement filterButton = $(byClassName("v-button-friendly"))
-        filterButton.click()
-    }
-
-    @Test
-        @Order(1)
-    @DisplayName(value = "Downloads attachments from sent emails")
-    void downloadAttachment() {
-        $j(MainScreen).openEmailSendingScreen()
-        $j(EmailSendingScreen) with {
-            fillTextField(subject, EMPTY_DOWNLOAD_STRING)
-            clickButton(sync)
-
-            fillTextField(subject, ONE_ATTACHMENT_STRING)
-            clickButton(syncAttach)
-
-            fillTextField(subject, MULTI_ATTACHMENTS_STRING)
-            clickButton(syncMultiAttach)
-        }
-        $j(MainScreen).openEmailHistoryScreen()
-        $j(EmailHistoryScreen) with {
-            Selenide.sleep(2000)
-
-            selectRowInTableByText(EMPTY_DOWNLOAD_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            clickButton(downloadAttachmentBtn)
-            checkNotificationCaption("Message has no attachments")
-
-            checkByCellsRecordIsDisplayed(ONE_ATTACHMENT_STRING, EMAIL_ATTACH_PNG, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            selectRowInTableByText(ONE_ATTACHMENT_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            clickButton(downloadAttachmentBtn)
-
-            checkByCellsRecordIsDisplayed(MULTI_ATTACHMENTS_STRING, MULTI_ATTACHMENT_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            selectRowInTableByText(MULTI_ATTACHMENTS_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
-            clickButton(downloadAttachmentBtn)
-
-            $j(EmailAttachmentDownloadDialog).with {
-                selectRowInTableByText(TEST_PNG, ATTACHMENTS_TABLE_J_TEST_ID)
-                clickButton(select)
-            }
         }
     }
 }
