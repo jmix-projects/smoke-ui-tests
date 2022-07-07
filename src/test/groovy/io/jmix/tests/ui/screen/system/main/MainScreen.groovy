@@ -9,6 +9,7 @@ import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
+import io.jmix.tests.ui.screen.addonscreen.localfilestorage.EntityWithFileScreen
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
 import io.jmix.tests.ui.screen.administration.applicationsettings.ApplicationSettingsScreen
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
@@ -168,5 +169,9 @@ class MainScreen extends Composite<MainScreen> {
 
     ApplicationSettingsScreen openApplicationSettingsScreen() {
         sideMenu.openItem(Menus.APPLICATION_SETTINGS_SCREEN)
+    }
+
+    EntityWithFileScreen openEntityWithFileScreen() {
+        sideMenu.openItem(Menus.ENTITY_WITH_FILE_SCREEN)
     }
 }
