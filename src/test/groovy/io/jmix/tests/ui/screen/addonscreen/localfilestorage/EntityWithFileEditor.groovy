@@ -22,9 +22,9 @@ class EntityWithFileEditor extends Composite<EntityWithFileEditor> implements Ta
     @Wire
     Button closeBtn
 
-    static void uploadNewDocument(String filePath, String newName) {
+    static void generateAndUploadNewFile(String filePath, String newFilePath) {
         File file = new File(filePath)
-        File newFile = new File(newName)
+        File newFile = new File(newFilePath)
         FileUtils.copyFile(file, newFile)
 
         $j(FileUploadField, byXpath(".//div[contains(@class, 'jmix-fileupload v-widget')]"))

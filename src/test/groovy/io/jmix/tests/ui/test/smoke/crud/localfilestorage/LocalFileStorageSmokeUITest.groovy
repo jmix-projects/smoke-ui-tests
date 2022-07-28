@@ -14,7 +14,9 @@ import static io.jmix.masquerade.Selectors.$j
 class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorageHelper {
 
     public static final String LOCAL_FS_TABLE_J_TEST_ID = "entityWithFilesTable"
-    public static final String FILENAME = "helloworld.txt"
+    public static final String CREATE_FILE_NAME = "LocalfsDocCreate.txt"
+    public static final String EDIT_FILE_NAME = "LocalfsDocEdit.txt"
+    public static final String DELETE_FILE_NAME = "LocalfsDocDelete.txt"
 
     @BeforeEach
     void openEmailTemplateBrowse() {
@@ -24,14 +26,14 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     @Test
     @DisplayName("Uploads file to browser")
     void checkFileUploading() {
-        def fileName = getUniqueName(FILENAME)
+        def fileName = getUniqueName(CREATE_FILE_NAME)
 
         $j(EntityWithFileScreen).with {
             clickButton(createBtn)
         }
 
         $j(EntityWithFileEditor).with {
-            uploadFileToDocumentBrowser(fileName)
+            generateAndUploadFileToEditor(CREATE_FILE_NAME, fileName)
             clickButton(okBtn)
         }
 
@@ -43,15 +45,15 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     @Test
     @DisplayName("Edits uploaded file")
     void editFileUploading() {
-        def fileName = getUniqueName(FILENAME)
-        def editedFileName = getUniqueName(FILENAME)
+        def fileName = getUniqueName(CREATE_FILE_NAME)
+        def editedFileName = getUniqueName(EDIT_FILE_NAME)
 
         $j(EntityWithFileScreen).with {
             clickButton(createBtn)
         }
 
         $j(EntityWithFileEditor).with {
-            uploadFileToDocumentBrowser(fileName)
+            generateAndUploadFileToEditor(CREATE_FILE_NAME, fileName)
             clickButton(okBtn)
         }
 
@@ -61,7 +63,7 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
         }
 
         $j(EntityWithFileEditor).with {
-            uploadFileToDocumentBrowser(editedFileName)
+            generateAndUploadFileToEditor(EDIT_FILE_NAME, editedFileName)
             clickButton(okBtn)
         }
 
@@ -73,26 +75,26 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     @Test
     @DisplayName("Removes uploaded file")
     void removeFileUploading() {
-        def fileName = getUniqueName(FILENAME)
+        def deleteFileName = getUniqueName(DELETE_FILE_NAME)
 
         $j(EntityWithFileScreen).with {
             clickButton(createBtn)
         }
 
         $j(EntityWithFileEditor).with {
-            uploadFileToDocumentBrowser(fileName)
+            generateAndUploadFileToEditor(DELETE_FILE_NAME, deleteFileName)
             clickButton(okBtn)
         }
 
         $j(EntityWithFileScreen).with {
-            checkRecordIsDisplayed(fileName, LOCAL_FS_TABLE_J_TEST_ID)
+            checkRecordIsDisplayed(deleteFileName, LOCAL_FS_TABLE_J_TEST_ID)
         }
 
         $j(EntityWithFileScreen).with {
-            selectRowInTableByText(fileName, LOCAL_FS_TABLE_J_TEST_ID)
+            selectRowInTableByText(deleteFileName, LOCAL_FS_TABLE_J_TEST_ID)
             clickButton(removeBtn)
             clickYesInAConfirmationDialog()
-            checkRecordIsNotDisplayed(fileName, LOCAL_FS_TABLE_J_TEST_ID)
+            checkRecordIsNotDisplayed(deleteFileName, LOCAL_FS_TABLE_J_TEST_ID)
         }
     }
 }
