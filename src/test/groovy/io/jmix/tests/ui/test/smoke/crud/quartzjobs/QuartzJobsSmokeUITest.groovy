@@ -13,9 +13,11 @@ import static io.jmix.masquerade.Selectors.$j
 
 class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String QUARTZ_JOBS_TABLE_J_TEST_ID = "jobModelsTable"
-    public static final String QUARTZ_JOBS_DESCRIPTION = "this is the description"
+    public static final String QUARTZ_JOB_DESCRIPTION = "This is the Quartz job description"
     public static final String QUARTZ_CUSTOM_JOB = "com.company.samplesales.app.CustomJob"
+    public static final String QUARTZ_CUSTOM_JOB_FOR_EDIT = "com.company.samplesales.app.CustomJobForEdit"
     public static final String QUARTZ_EXECUTE_JOB_NOTIFICATION_TEXT = " triggered for execution"
+    public static final String QUARTZ_DELETE_JOB_NOTIFICATION_TEXT = " deleted"
 
     @BeforeEach
     void openQuartzJobsBrowse() {
@@ -23,25 +25,77 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Creates and executes a job")
+    @DisplayName("Creates and executes Quartz job")
     void createAndExecuteQuartzJob() {
         $j(QuartzJobsBrowse).with {
             clickButton(createBtn)
         }
-
-        def nameJob = getUniqueName("AutoJob ")
+        def jobName = getUniqueName("JobForCreating ")
         $j(JobEditor).with {
-            fillTextField(jobNameField, nameJob)
+            fillTextField(jobNameField, jobName)
             selectCustomJob(QUARTZ_CUSTOM_JOB)
-            fillTextField(jobDescriptionField, QUARTZ_JOBS_DESCRIPTION)
+            fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION)
             clickButton(ok)
         }
-
-        def notification = "Job " + nameJob + QUARTZ_EXECUTE_JOB_NOTIFICATION_TEXT
+        def notificationTextAboutExecution = "Job " + jobName + QUARTZ_EXECUTE_JOB_NOTIFICATION_TEXT
         $j(QuartzJobsBrowse).with {
-            selectRowInTableByText(nameJob, QUARTZ_JOBS_TABLE_J_TEST_ID)
+            selectRowInTableByText(jobName, QUARTZ_JOBS_TABLE_J_TEST_ID)
             clickButton(executeNowBtn)
-            checkNotificationDescription(notification)
+            checkNotificationDescription(notificationTextAboutExecution)
+        }
+    }
+
+    @Test
+    @DisplayName("Edits and executes Quartz job")
+    void editAndExecuteQuartzJob() {
+        $j(QuartzJobsBrowse).with {
+            clickButton(createBtn)
+        }
+        def jobName = getUniqueName("JobForEditing ")
+        $j(JobEditor).with {
+            fillTextField(jobNameField, jobName)
+            selectCustomJob(QUARTZ_CUSTOM_JOB_FOR_EDIT)
+            fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION)
+            clickButton(ok)
+        }
+        $j(QuartzJobsBrowse).with {
+            selectRowInTableByText(jobName, QUARTZ_JOBS_TABLE_J_TEST_ID)
+            clickButton(editBtn)
+        }
+        def editedJobName = getUniqueName("JobForEditing - edited ")
+        $j(JobEditor).with {
+            fillTextField(jobNameField, editedJobName)
+            selectCustomJob(QUARTZ_CUSTOM_JOB)  //todo: use another job
+            fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION + getUniqueName("edited "))
+            clickButton(ok)
+        }
+        def notificationTextAboutExecution = "Job " + editedJobName + QUARTZ_EXECUTE_JOB_NOTIFICATION_TEXT
+        $j(QuartzJobsBrowse).with {
+            selectRowInTableByText(editedJobName, QUARTZ_JOBS_TABLE_J_TEST_ID)
+            clickButton(executeNowBtn)
+            checkNotificationDescription(notificationTextAboutExecution)
+        }
+    }
+
+    @Test
+    @DisplayName("Removes Quartz job")
+    void removeQuartzJob() {
+        $j(QuartzJobsBrowse).with {
+            clickButton(createBtn)
+        }
+        def jobName = getUniqueName("JobForDeleting ")
+        $j(JobEditor).with {
+            fillTextField(jobNameField, jobName)
+            selectCustomJob(QUARTZ_CUSTOM_JOB)
+            fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION)
+            clickButton(ok)
+        }
+        def notificationTextAboutDeleting = "Job " + jobName + QUARTZ_DELETE_JOB_NOTIFICATION_TEXT
+        $j(QuartzJobsBrowse).with {
+            selectRowInTableByText(jobName, QUARTZ_JOBS_TABLE_J_TEST_ID)
+            clickButton(removeBtn)
+            clickButton(optionDialog_yes)
+            checkNotificationDescription(notificationTextAboutDeleting)
         }
     }
 }

@@ -12,4 +12,13 @@ class QuartzJobsBrowse extends Composite<QuartzJobsBrowse> implements TableActio
 
     @Wire
     Button executeNowBtn
+
+    @Wire
+    Button editBtn
+
+    @Wire
+    Button removeBtn
+
+    @Wire
+    Button optionDialog_yes
 }
