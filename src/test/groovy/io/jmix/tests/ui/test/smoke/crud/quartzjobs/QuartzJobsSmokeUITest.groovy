@@ -54,7 +54,7 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
         def jobName = getUniqueName("JobForEditing ")
         $j(JobEditor).with {
             fillTextField(jobNameField, jobName)
-            selectCustomJob(QUARTZ_CUSTOM_JOB_FOR_EDIT)
+            selectCustomJob(QUARTZ_CUSTOM_JOB)
             fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION)
             clickButton(ok)
         }
@@ -65,7 +65,7 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
         def editedJobName = getUniqueName("JobForEditing - edited ")
         $j(JobEditor).with {
             fillTextField(jobNameField, editedJobName)
-            selectCustomJob(QUARTZ_CUSTOM_JOB)  //todo: use another job
+            selectCustomJob(QUARTZ_CUSTOM_JOB_FOR_EDIT)
             fillTextField(jobDescriptionField, QUARTZ_JOB_DESCRIPTION + getUniqueName("edited "))
             clickButton(ok)
         }
