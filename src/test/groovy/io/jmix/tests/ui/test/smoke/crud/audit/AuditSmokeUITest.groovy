@@ -23,15 +23,25 @@ class AuditSmokeUITest extends BaseUiTest implements AuditHelper {
     }
 
     @Test
-    @DisplayName("Creates and saves setup")
-    void createAndSaveSetupTest() {
+    @DisplayName("Creates and removes setup for simple Customer entity")
+    void createAndRemoveSetupForEntity() {
         createAndSaveSetup(CUSTOMER_ENTITY_FULL_NAME)
         applySetupChanges(CUSTOMER_ENTITY_NAME_WITH_PREFIX)
+        $j(EntityLogBrowse).with {
+            selectSetupRecord(CUSTOMER_ENTITY_NAME_WITH_PREFIX)
+            clickButton(remove)
+            clickYesInAConfirmationDialog()
+        }
+        $j(EntityLogBrowse).with {
+            checkRecordIsNotDisplayed(CUSTOMER_ENTITY_NAME_WITH_PREFIX, ENTITY_LOG_TABLE_J_TEST_ID)
+            applyChanges()
+            checkAppliedChangesNotification()
+        }
     }
 
     @Test
-    @DisplayName("Removes setup")
-    void removesSetupTest() {
+    @DisplayName("Creates and removes setup for entity with dynamic attributes")
+    void createAndRemoveSetupForEntityWithDynAttr() {
         createAndSaveSetup(DYN_ATTR_ENTITY_FULL_NAME)
         applySetupChanges(DYN_ATTR_ENTITY_NAME_WITH_PREFIX)
         $j(EntityLogBrowse).with {
