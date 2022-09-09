@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.3.2'
+    bomVersion = '1.3.3'
     projectId = 'sales'
 }
 
@@ -184,4 +184,5 @@ test.dependsOn testUi
 
 compileWidgets {
     generate "com.company.samplesales.widgets.CustomWidgetSet"
+    includePaths('**/io/jmix/**/widget/**', '**/com/company/samplesales/widgets/**')
 }
