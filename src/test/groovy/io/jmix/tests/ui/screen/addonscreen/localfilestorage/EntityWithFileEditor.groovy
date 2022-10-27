@@ -29,6 +29,6 @@ class EntityWithFileEditor extends Composite<EntityWithFileEditor> implements Ta
 
         $j(FileUploadField, byXpath(".//div[contains(@class, 'jmix-fileupload v-widget')]"))
                 .upload(newFile)
-        Selenide.sleep(400)
+        Selenide.sleep(1000)
     }
 }
