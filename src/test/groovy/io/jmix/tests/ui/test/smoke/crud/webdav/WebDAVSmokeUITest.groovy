@@ -46,7 +46,7 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
 
     @Test
     @DisplayName("Checks document version dialog window")
-    void openDocumentVersionDialog() {
+    void checksDocumentVersionDialog() {
         def fileName = getUniqueName(FILENAME)
         uploadFileToDocumentBrowser(fileName)
 

@@ -9,14 +9,14 @@ import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
-import io.jmix.tests.ui.screen.addonscreen.localfilestorage.EntityWithFileScreen
+import io.jmix.tests.ui.screen.addonscreen.localfilestorage.EntityWithFileBrowse
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
 import io.jmix.tests.ui.screen.administration.applicationsettings.ApplicationSettingsScreen
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
 import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBrowse
-import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
+import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryBrowse
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
@@ -139,8 +139,8 @@ class MainScreen extends Composite<MainScreen> {
         sideMenu.openItem(Menus.EMAIL_SENDING_SCREEN)
     }
 
-    EmailHistoryScreen openEmailHistoryScreen() {
-        sideMenu.openItem(Menus.EMAIL_HISTORY_SCREEN)
+    EmailHistoryBrowse openEmailHistoryBrowse() {
+        sideMenu.openItem(Menus.EMAIL_HISTORY_BROWSE)
     }
 
     SearchPersonBrowse openSearchPersonBrowse() {
@@ -171,7 +171,7 @@ class MainScreen extends Composite<MainScreen> {
         sideMenu.openItem(Menus.APPLICATION_SETTINGS_SCREEN)
     }
 
-    EntityWithFileScreen openEntityWithFileScreen() {
-        sideMenu.openItem(Menus.ENTITY_WITH_FILE_SCREEN)
+    EntityWithFileBrowse openEntityWithFileBrowse() {
+        sideMenu.openItem(Menus.ENTITY_WITH_FILE_BROWSE)
     }
 }

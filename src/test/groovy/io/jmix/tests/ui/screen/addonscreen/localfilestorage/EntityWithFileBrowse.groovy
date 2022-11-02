@@ -6,7 +6,7 @@ import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.FileUploadField
 import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
 
-class EntityWithFileScreen extends Composite<EntityWithFileScreen> implements TableActionsTrait {
+class EntityWithFileBrowse extends Composite<EntityWithFileBrowse> implements TableActionsTrait {
 
     @Wire
     FileUploadField fileMultiUpload

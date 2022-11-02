@@ -130,9 +130,6 @@ trait UiHelper {
     static String getUniqueName(String baseString) {
         return baseString + getGeneratedString()
     }
-    static String getBaseName(String baseString) {
-        return baseString
-    }
 
     def clickYesInAConfirmationDialog() {
         $j(ConfirmationDialog).with {

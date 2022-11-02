@@ -5,7 +5,6 @@ import io.jmix.tests.ui.screen.dashboard.DashboardEditor
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.helpers.DashboardHelper
-import io.jmix.tests.ui.test.utils.helpers.UiHelper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

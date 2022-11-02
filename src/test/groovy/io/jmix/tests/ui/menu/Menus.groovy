@@ -9,14 +9,14 @@ import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
 import io.jmix.tests.ui.screen.addonscreen.GrapeJSScreen
 import io.jmix.tests.ui.screen.addonscreen.PivotTableScreen
 import io.jmix.tests.ui.screen.addonscreen.RESTScreen
-import io.jmix.tests.ui.screen.addonscreen.localfilestorage.EntityWithFileScreen
+import io.jmix.tests.ui.screen.addonscreen.localfilestorage.EntityWithFileBrowse
 import io.jmix.tests.ui.screen.addonscreen.search.SearchPersonBrowse
 import io.jmix.tests.ui.screen.administration.applicationsettings.ApplicationSettingsScreen
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 import io.jmix.tests.ui.screen.administration.businesscalendars.browse.BusinessCalendarBrowse
 import io.jmix.tests.ui.screen.administration.datatools.EntityInspectorBrowse
 import io.jmix.tests.ui.screen.administration.dynattr.browser.DynamicAttributeBrowse
-import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
+import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryBrowse
 import io.jmix.tests.ui.screen.administration.emailtemplates.EmailTemplateBrowse
 import io.jmix.tests.ui.screen.administration.jmx.JMXConsoleScreen
 import io.jmix.tests.ui.screen.administration.notifications.NotificationBrowse
@@ -162,8 +162,8 @@ final class Menus {
     public static final SideMenu.Menu<RESTScreen> REST_SCREEN =
             new SideMenu.Menu<>(RESTScreen, 'addonsScreens', 'sales_RestScreen')
 
-    public static final SideMenu.Menu<EmailHistoryScreen> EMAIL_HISTORY_SCREEN =
-            new SideMenu.Menu<>(EmailHistoryScreen, 'administration', 'email_SendingMessage.browse')
+    public static final SideMenu.Menu<EmailHistoryBrowse> EMAIL_HISTORY_BROWSE =
+            new SideMenu.Menu<>(EmailHistoryBrowse, 'administration', 'email_SendingMessage.browse')
 
     public static final SideMenu.Menu<WebDAVDocumentBrowse> WEBDAV_DOCUMENT_BROWSE =
             new SideMenu.Menu<>(WebDAVDocumentBrowse, 'administration', 'webdav_WebdavDocument.browse')
@@ -180,8 +180,8 @@ final class Menus {
     public static final SideMenu.Menu<ApplicationSettingsScreen> APPLICATION_SETTINGS_SCREEN =
             new SideMenu.Menu<>(ApplicationSettingsScreen, 'administration', 'appset_appSettingsEntity.screen')
 
-    public static final SideMenu.Menu<EntityWithFileScreen> ENTITY_WITH_FILE_SCREEN =
-            new SideMenu.Menu<>(EntityWithFileScreen, 'addonsScreens', 'sales_EntityWithFile.browse')
+    public static final SideMenu.Menu<EntityWithFileBrowse> ENTITY_WITH_FILE_BROWSE =
+            new SideMenu.Menu<>(EntityWithFileBrowse, 'addonsScreens', 'sales_EntityWithFile.browse')
 
 
 }

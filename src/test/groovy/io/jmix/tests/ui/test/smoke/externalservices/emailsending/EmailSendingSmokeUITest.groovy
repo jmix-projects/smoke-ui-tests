@@ -3,7 +3,7 @@ package io.jmix.tests.ui.test.smoke.externalservices.emailsending
 import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.SelenideElement
 import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
-import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryScreen
+import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryBrowse
 import io.jmix.tests.ui.screen.administration.emailhistory.dialog.EmailAttachmentDownloadDialog
 import io.jmix.tests.ui.screen.administration.emailhistory.dialog.EmailResendDialog
 import io.jmix.tests.ui.screen.system.main.MainScreen
@@ -54,8 +54,8 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             fillTextField(subject, MULTI_ATTACHMENTS_STRING)
             clickButton(syncMultiAttach)
         }
-        $j(MainScreen).openEmailHistoryScreen()
-        $j(EmailHistoryScreen) with {
+        $j(MainScreen).openEmailHistoryBrowse()
+        $j(EmailHistoryBrowse) with {
             Selenide.sleep(2000)
 
             selectRowInTableByText(EMPTY_DOWNLOAD_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
@@ -89,9 +89,9 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             Selenide.sleep(10000)
         }
 
-        $j(MainScreen).openEmailHistoryScreen()
+        $j(MainScreen).openEmailHistoryBrowse()
 
-        $j(EmailHistoryScreen).with {
+        $j(EmailHistoryBrowse).with {
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(datepart, "")
         }
@@ -110,9 +110,9 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(sync)
             Selenide.sleep(4000)
         }
-        $j(MainScreen).openEmailHistoryScreen()
+        $j(MainScreen).openEmailHistoryBrowse()
 
-        $j(EmailHistoryScreen).with {
+        $j(EmailHistoryBrowse).with {
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             clickButton(resendEmailBtn)
@@ -146,9 +146,9 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(async)
         }
 
-        $j(MainScreen).openEmailHistoryScreen()
+        $j(MainScreen).openEmailHistoryBrowse()
 
-        $j(EmailHistoryScreen).with {
+        $j(EmailHistoryBrowse).with {
             checkByCellsRecordIsDisplayed(emailSubject, QUEUE_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(attemptsMade, '0')
@@ -160,9 +160,9 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(send)
             Selenide.sleep(10000)
         }
-        $j(MainScreen).openEmailHistoryScreen()
+        $j(MainScreen).openEmailHistoryBrowse()
 
-        $j(EmailHistoryScreen).with {
+        $j(EmailHistoryBrowse).with {
             checkByCellsRecordIsDisplayed(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
         }
     }
@@ -179,9 +179,9 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(async)
         }
 
-        $j(MainScreen).openEmailHistoryScreen()
+        $j(MainScreen).openEmailHistoryBrowse()
 
-        $j(EmailHistoryScreen).with {
+        $j(EmailHistoryBrowse).with {
             checkByCellsRecordIsDisplayed(emailSubject, QUEUE_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID)
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(attemptsMade, '0')
