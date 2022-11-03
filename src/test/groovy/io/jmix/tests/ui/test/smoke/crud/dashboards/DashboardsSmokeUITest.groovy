@@ -5,7 +5,6 @@ import io.jmix.tests.ui.screen.dashboard.DashboardEditor
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.helpers.DashboardHelper
-import io.jmix.tests.ui.test.utils.helpers.UiHelper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -23,7 +22,7 @@ class DashboardsSmokeUITest extends BaseUiTest implements DashboardHelper {
     }
 
     @Test
-    @DisplayName("Creates dashboard")
+    @DisplayName("Create dashboard")
     void createDashboard() {
         def dashboardName = getUniqueName(DASHBOARD_BASE_NAME)
         def dashboardCode = getUniqueName(DASHBOARD_BASE_CODE)
@@ -36,7 +35,7 @@ class DashboardsSmokeUITest extends BaseUiTest implements DashboardHelper {
     }
 
     @Test
-    @DisplayName("Edits dashboard")
+    @DisplayName("Edit dashboard")
     void editDashboard() {
         def dashboardName = getUniqueName(DASHBOARD_BASE_NAME)
         def dashboardEditedName = getUniqueName(DASHBOARD_BASE_NAME)
@@ -57,7 +56,7 @@ class DashboardsSmokeUITest extends BaseUiTest implements DashboardHelper {
     }
 
     @Test
-    @DisplayName("Removes dashboard")
+    @DisplayName("Remove dashboard")
     void removeDashboard() {
         def dashboardName = getUniqueName(DASHBOARD_BASE_NAME)
         def dashboardCode = getUniqueName(DASHBOARD_BASE_CODE)

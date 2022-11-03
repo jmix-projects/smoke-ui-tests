@@ -38,7 +38,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Creates and deploys a process")
+    @DisplayName("Create and deploy a process")
     void createBPMProcess() {
         def processName = getUniqueName(PROCESS_BASE_NAME)
         def processId = getUniqueName(PROCESS_BASE_ID)
@@ -55,7 +55,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Edits a deployed process")
+    @DisplayName("Edit a deployed process")
     void editBPMProcess() {
         def processName = getUniqueName(PROCESS_BASE_NAME)
         def processId = getUniqueName(PROCESS_BASE_ID)

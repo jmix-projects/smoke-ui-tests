@@ -29,7 +29,7 @@ class ApplicationSettingsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Сhecks default values and notification when save values")
+    @DisplayName("Check default values and notification when save values")
     void checkDefaultValuesAndNotification() {
         notifTextFieldValue = getUniqueName(NOTIFICATION_TEXT_FIELD)
         defGradeFieldValue = getUniqueName(DEFAULT_GRADE_FIELD)
@@ -46,7 +46,7 @@ class ApplicationSettingsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Fills and cleans values with page reopening")
+    @DisplayName("Fill and clean values with page reopening")
     void fillAndCleanValuesWithPageReopening() {
         notifTextFieldValue = getUniqueName(NOTIFICATION_TEXT_FIELD)
         defGradeFieldValue = getUniqueName(DEFAULT_GRADE_FIELD)

@@ -25,7 +25,7 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Creates and executes Quartz job")
+    @DisplayName("Create and execute Quartz job")
     void createAndExecuteQuartzJob() {
         $j(QuartzJobsBrowse).with {
             clickButton(createBtn)
@@ -46,7 +46,7 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Edits and executes Quartz job")
+    @DisplayName("Edit and execute Quartz job")
     void editAndExecuteQuartzJob() {
         $j(QuartzJobsBrowse).with {
             clickButton(createBtn)
@@ -78,7 +78,7 @@ class  QuartzJobsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Removes Quartz job")
+    @DisplayName("Remove Quartz job")
     void removeQuartzJob() {
         $j(QuartzJobsBrowse).with {
             clickButton(createBtn)

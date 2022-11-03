@@ -4,7 +4,7 @@ import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 
 import static io.jmix.masquerade.Selectors.$j
 
-trait AuditHelper extends UiHelper {
+trait EntityLogSetupHelper extends UiHelper {
 
     static void createAndSaveSetup(String entityFullName){
         $j(EntityLogBrowse).with {

@@ -6,7 +6,7 @@ import io.jmix.masquerade.component.Button
 import io.jmix.masquerade.component.TextField
 import io.jmix.tests.ui.test.utils.traits.TableActionsTrait
 
-class EmailHistoryScreen extends Composite<EmailHistoryScreen> implements TableActionsTrait {
+class EmailHistoryBrowse extends Composite<EmailHistoryBrowse> implements TableActionsTrait {
     @Wire
     TextField datepart
 

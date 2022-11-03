@@ -31,7 +31,7 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
     }
 
     @Test
-    @DisplayName("Uploads file to document browser")
+    @DisplayName("Upload file to document browser")
     void checkFileUploading() {
         def fileName = getUniqueName(FILENAME)
         uploadFileToDocumentBrowser(fileName)
@@ -45,8 +45,8 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
     }
 
     @Test
-    @DisplayName("Checks document version dialog window")
-    void openDocumentVersionDialog() {
+    @DisplayName("Check document version dialog window")
+    void checksDocumentVersionDialog() {
         def fileName = getUniqueName(FILENAME)
         uploadFileToDocumentBrowser(fileName)
 
@@ -62,7 +62,7 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
     }
 
     @Test
-    @DisplayName("Removes non-locked file")
+    @DisplayName("Remove non-locked file")
     void removeNotLockedFile() {
         def fileName = getUniqueName(FILENAME)
         uploadFileToDocumentBrowser(fileName)
@@ -80,7 +80,7 @@ class WebDAVSmokeUITest extends BaseUiTest implements WebDAVHelper {
     }
 
     @Test
-    @DisplayName("Removes locked file")
+    @DisplayName("Remove locked file")
     void removeLockedFile() {
         def fileName = getUniqueName(FILENAME)
         uploadFileToDocumentBrowser(fileName)

@@ -3,14 +3,14 @@ package io.jmix.tests.ui.test.smoke.crud.audit
 import io.jmix.tests.ui.screen.administration.audit.EntityLogBrowse
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
-import io.jmix.tests.ui.test.utils.helpers.AuditHelper
+import io.jmix.tests.ui.test.utils.helpers.EntityLogSetupHelper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 import static io.jmix.masquerade.Selectors.$j
 
-class AuditSmokeUITest extends BaseUiTest implements AuditHelper {
+class EntityLogSetupTest extends BaseUiTest implements EntityLogSetupHelper {
     public static final String CUSTOMER_ENTITY_NAME_WITH_PREFIX = "sales_Customer"
     public static final String DYN_ATTR_ENTITY_NAME_WITH_PREFIX = "sales_DynamicAttrPerson"
     public static final String ENTITY_LOG_TABLE_J_TEST_ID = "loggedEntityTable"
@@ -23,7 +23,7 @@ class AuditSmokeUITest extends BaseUiTest implements AuditHelper {
     }
 
     @Test
-    @DisplayName("Creates and removes setup for simple Customer entity")
+    @DisplayName("Create and remove setup for simple Customer entity")
     void createAndRemoveSetupForEntity() {
         createAndSaveSetup(CUSTOMER_ENTITY_FULL_NAME)
         applySetupChanges(CUSTOMER_ENTITY_NAME_WITH_PREFIX)
@@ -40,7 +40,7 @@ class AuditSmokeUITest extends BaseUiTest implements AuditHelper {
     }
 
     @Test
-    @DisplayName("Creates and removes setup for entity with dynamic attributes")
+    @DisplayName("Create and remove setup for entity with dynamic attributes")
     void createAndRemoveSetupForEntityWithDynAttr() {
         createAndSaveSetup(DYN_ATTR_ENTITY_FULL_NAME)
         applySetupChanges(DYN_ATTR_ENTITY_NAME_WITH_PREFIX)
