@@ -23,7 +23,7 @@ class EntityLogSetupTest extends BaseUiTest implements EntityLogSetupHelper {
     }
 
     @Test
-    @DisplayName("Creates and removes setup for simple Customer entity")
+    @DisplayName("Create and remove setup for simple Customer entity")
     void createAndRemoveSetupForEntity() {
         createAndSaveSetup(CUSTOMER_ENTITY_FULL_NAME)
         applySetupChanges(CUSTOMER_ENTITY_NAME_WITH_PREFIX)
@@ -40,7 +40,7 @@ class EntityLogSetupTest extends BaseUiTest implements EntityLogSetupHelper {
     }
 
     @Test
-    @DisplayName("Creates and removes setup for entity with dynamic attributes")
+    @DisplayName("Create and remove setup for entity with dynamic attributes")
     void createAndRemoveSetupForEntityWithDynAttr() {
         createAndSaveSetup(DYN_ATTR_ENTITY_FULL_NAME)
         applySetupChanges(DYN_ATTR_ENTITY_NAME_WITH_PREFIX)

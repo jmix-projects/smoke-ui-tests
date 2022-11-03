@@ -28,7 +28,7 @@ class BusinessCalendarsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Creates businessCalendar")
+    @DisplayName("Create businessCalendar")
     void createBusinessCalendar() {
 
         $j(BusinessCalendarBrowse).with {

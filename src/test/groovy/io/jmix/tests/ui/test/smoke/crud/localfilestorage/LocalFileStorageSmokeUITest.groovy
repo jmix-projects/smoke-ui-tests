@@ -25,8 +25,8 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     }
 
     @Test
-    @DisplayName("Create file to browser")
-    void createFileUploading() {
+    @DisplayName("Create new entity with file")
+    void createEntityWithFile() {
         def fileName = getUniqueName(CREATE_FILE_NAME)
 
         $j(EntityWithFileBrowse).with {
@@ -45,8 +45,8 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     }
 
     @Test
-    @DisplayName("Edits uploaded file")
-    void editFileUploading() {
+    @DisplayName("Edit entity with file")
+    void editEntityWithFile() {
         def fileName = getUniqueName(CREATE_FILE_NAME)
         def editedFileName = getUniqueName(EDIT_FILE_NAME)
 
@@ -76,8 +76,8 @@ class LocalFileStorageSmokeUITest extends BaseUiTest implements LocalFileStorage
     }
 
     @Test
-    @DisplayName("Removes uploaded file")
-    void removeFileUploading() {
+    @DisplayName("Remove entity with file")
+    void removeEntityWithFile() {
         def deleteFileName = getUniqueName(DELETE_FILE_NAME)
 
         $j(EntityWithFileBrowse).with {

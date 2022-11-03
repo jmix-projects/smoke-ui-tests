@@ -14,7 +14,7 @@ import static io.jmix.masquerade.Selectors.$j
 
 class NotificationsSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String NOTIFICATION_J_TEST_ID = "inAppNotificationsTable"
-    public static final String TEST_NOTIFICATION_BASE_REСIPIENT = "admin"
+    public static final String TEST_NOTIFICATION_BASE_RECIPIENT = "admin"
     public static final String TEST_NOTIFICATION_TYPE_INFO = "info"
     public static final String NOTIFICATION_CHANNELS_IN_APP = "In-app channel"
     public static final String NOTIFICATION_BODY = "Hi,QA!"
@@ -25,7 +25,7 @@ class NotificationsSmokeUITest extends BaseUiTest implements UiHelper {
     }
 
     @Test
-    @DisplayName("Creates a notification")
+    @DisplayName("Create a notification")
     void createNotification() {
         $j(NotificationBrowse).with {
             clickButton(createBtn)
@@ -35,7 +35,7 @@ class NotificationsSmokeUITest extends BaseUiTest implements UiHelper {
         $j(NotificationEditor).with {
             fillTextField(subjectField, subject)
             selectType(TEST_NOTIFICATION_TYPE_INFO)
-            selectRecipient(TEST_NOTIFICATION_BASE_REСIPIENT)
+            selectRecipient(TEST_NOTIFICATION_BASE_RECIPIENT)
             chooseChannelsField(NOTIFICATION_CHANNELS_IN_APP)
             fillTextField(plainTextBodyField, NOTIFICATION_BODY)
             clickButton(okBtn)

@@ -22,7 +22,7 @@ class MultitenancySmokeUITest extends BaseUiTest implements MultitenancyHelper {
     }
 
     @Test
-    @DisplayName("Creates tenant")
+    @DisplayName("Create tenant")
     void createTenant() {
         def tenantIdStr = getUniqueName(TENANT_ID_BASE_CODE)
         def tenantNameStr = getUniqueName(TENANT_BASE_NAME)
@@ -34,7 +34,7 @@ class MultitenancySmokeUITest extends BaseUiTest implements MultitenancyHelper {
 
 
     @Test
-    @DisplayName("Edits tenant")
+    @DisplayName("Edit tenant")
     void editTenant() {
         def tenantIdStr = getUniqueName(TENANT_ID_BASE_CODE)
         def tenantNameStr = getUniqueName(TENANT_BASE_NAME)
@@ -53,7 +53,7 @@ class MultitenancySmokeUITest extends BaseUiTest implements MultitenancyHelper {
     }
 
     @Test
-    @DisplayName("Removes tenant")
+    @DisplayName("Remove tenant")
     void removeTenant() {
         def tenantIdStr = getUniqueName(TENANT_ID_BASE_CODE)
         def tenantNameStr = getUniqueName(TENANT_BASE_NAME)

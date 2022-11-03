@@ -23,7 +23,7 @@ class EmailTemplatesSmokeUITest extends BaseUiTest implements EmailTemplatesHelp
     }
 
     @Test
-    @DisplayName("Creates an email template")
+    @DisplayName("Create an email template")
     void createEmailTemplate() {
         def tempname = getUniqueName(TEST_TEMPLATE_BASE_NAME)
         def tempcode = getUniqueName(TEST_TEMPLATE_BASE_CODE)
@@ -35,7 +35,7 @@ class EmailTemplatesSmokeUITest extends BaseUiTest implements EmailTemplatesHelp
     }
 
     @Test
-    @DisplayName("Edits an email template")
+    @DisplayName("Edit an email template")
     void editEmailTemplate() {
         def tempname = getUniqueName(TEST_TEMPLATE_BASE_NAME)
         def tempEditedName = getUniqueName(TEST_TEMPLATE_BASE_NAME)
@@ -53,7 +53,7 @@ class EmailTemplatesSmokeUITest extends BaseUiTest implements EmailTemplatesHelp
     }
 
     @Test
-    @DisplayName("Removes an email template")
+    @DisplayName("Remove an email template")
     void removeEmailTemplate() {
         def tempname = getUniqueName(TEST_TEMPLATE_BASE_NAME)
         def tempcode = getUniqueName(TEST_TEMPLATE_BASE_CODE)
