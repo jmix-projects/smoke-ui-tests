@@ -56,7 +56,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
         }
         $j(MainScreen).openEmailHistoryBrowse()
         $j(EmailHistoryBrowse) with {
-            Selenide.sleep(2000)
+            Selenide.sleep(20000)
 
             selectRowInTableByText(EMPTY_DOWNLOAD_STRING, SENDING_MESSAGE_TABLE_J_TEST_ID)
             clickButton(downloadAttachmentBtn)
@@ -108,7 +108,7 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
         $j(EmailSendingScreen).with {
             fillTextField(subject, emailSubject)
             clickButton(sync)
-            Selenide.sleep(4000)
+            Selenide.sleep(20000)
         }
         $j(MainScreen).openEmailHistoryBrowse()
 
@@ -127,11 +127,6 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             clickRefreshFilterButton()
             checkRecordCount(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID, 2)
         }
-    }
-
-    private static void clickRefreshFilterButton() {
-        SelenideElement filterButton = $(byClassName("v-button-friendly"))
-        filterButton.click()
     }
 
     @Test
@@ -192,5 +187,10 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             checkFilledTextField(attemptsMade, '1')
         }
+    }
+
+    private static void clickRefreshFilterButton() {
+        SelenideElement filterButton = $(byClassName("v-button-friendly"))
+        filterButton.click()
     }
 }
