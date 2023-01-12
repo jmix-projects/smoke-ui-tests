@@ -72,18 +72,6 @@ trait UiHelper {
     }
 
     /**
-     * Selects param in defined Combobox by string value
-     * @param comboBox
-     * @param strValue
-     */
-    static void selectValueInComboBox(ComboBox comboBox, String strValue) {
-        comboBox.setFilter(strValue)
-                .getOptionsPopup()
-                .select(strValue)
-                .shouldHave(value(strValue))
-    }
-
-    /**
      * Fills defined field
      * @param field - defined field
      * @param value - defined value

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 import static io.jmix.masquerade.Conditions.DISABLED
+import static io.jmix.masquerade.Conditions.ENABLED
 import static io.jmix.masquerade.Selectors.$j
 
 class ReportsSmokeUITest extends BaseUiTest implements UiHelper {
@@ -59,7 +60,9 @@ class ReportsSmokeUITest extends BaseUiTest implements UiHelper {
 
         $j(ReportEditor).with {
             name.setValue(reportName)
-            selectValueInComboBox(group, GENERAL_GROUP_NAME)
+            group.shouldBe(ENABLED)
+                    .openOptionsPopup()
+                    .select(GENERAL_GROUP_NAME)
             clickButton(ok)
         }
 
