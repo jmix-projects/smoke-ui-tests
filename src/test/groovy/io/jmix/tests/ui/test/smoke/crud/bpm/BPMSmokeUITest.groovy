@@ -29,7 +29,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
     @Test
     @DisplayName("Create and deploy a process")
     void createBPMProcess() {
-        createAndDeployProcess(PROCESS_BASE_ID, PROCESS_BASE_NAME)
+        createAndDeployProcess()
 
         checkNotificationCaption(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
 
@@ -47,7 +47,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
     @Test
     @DisplayName("Edit a deployed process")
     void editBPMProcess() {
-        createAndDeployProcess(PROCESS_BASE_ID, PROCESS_BASE_NAME)
+        createAndDeployProcess()
         checkNotificationCaption(PROCESS_DEPLOYED_NOTIFICATION_TEXT)
 
         $j(MainScreen).openProcessDefinitionBrowse()
@@ -92,7 +92,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
     @Test
     @DisplayName("Remove a deployed process")
     void removeBPMProcess() {
-        createAndDeployProcess(PROCESS_BASE_ID, PROCESS_BASE_NAME)
+        createAndDeployProcess()
 
         $j(MainScreen).openProcessDefinitionBrowse()
 
@@ -107,7 +107,7 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
         }
     }
 
-    def createAndDeployProcess(String processId, String processName) {
+    def createAndDeployProcess() {
         $j(ModelerScreen).with {
             checkModelerIsDisplayed()
             clickButton(deployBtn)
