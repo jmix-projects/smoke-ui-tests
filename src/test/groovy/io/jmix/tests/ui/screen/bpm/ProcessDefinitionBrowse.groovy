@@ -23,6 +23,9 @@ class ProcessDefinitionBrowse extends Composite<ProcessDefinitionBrowse> {
     @Wire
     DataGrid processDefinitionsTable
 
+    @Wire(path = ["dialog_bpm_DefaultStartProcessForm", "startProcessBtn"])
+    Button startProcessBtnDialog
+
     void selectRowInTableByText(String s) {
         processDefinitionsTable.shouldBe(VISIBLE)
                 .selectRow(byText(s))

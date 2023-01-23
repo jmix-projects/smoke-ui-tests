@@ -21,14 +21,20 @@ class ModelerScreen extends Composite<ModelerScreen> {
     @Wire
     Button deployBtn
 
+    @Wire
+    Button saveDraftBtn
+
+    @Wire
+    Button openDraftBtn
+
+    @Wire(path = ["dialog_bpm_ContentStorage.edit", "nameField"])
+    TextField nameField
+
+    @Wire(path = ["dialog_bpm_ContentStorage.edit", "windowCommitAndClose"])
+    Button ok
+
     static void checkModelerIsDisplayed() {
         SelenideElement modeler = $(byJTestId("modeler"))
         modeler.shouldBe(VISIBLE)
     }
-
-    static void closeModelerTab() {
-        SelenideElement selenideElement = $(byChain(byJTestId("tab_bpm_BpmnModelerScreen"), byClassName("v-tabsheet-caption-close")))
-        selenideElement.click()
-    }
-
 }
