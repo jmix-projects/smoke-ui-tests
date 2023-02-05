@@ -15,8 +15,16 @@ public class LdapConfigurationBean extends AbstractLdapUserDetailsSynchronizatio
 
     @Override
     protected void mapUserDetailsAttributes(User userDetails, DirContextOperations ctx) {
-        userDetails.setFirstName(ctx.getStringAttribute("givenName"));
+        String firstName = "";
+
+        if (ctx.getStringAttribute("givenName")!=null) {
+            firstName = ctx.getStringAttribute("givenName");
+        }
+        if (ctx.getStringAttribute("cn")!=null) {
+            firstName = ctx.getStringAttribute("cn");
+        }
+        userDetails.setFirstName(firstName);
         userDetails.setLastName(ctx.getStringAttribute("sn"));
     }
-
 }
+
