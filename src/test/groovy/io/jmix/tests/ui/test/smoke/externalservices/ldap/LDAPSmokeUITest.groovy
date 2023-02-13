@@ -16,14 +16,26 @@ class LDAPSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String APPLICATION_NAME = "Sample Sales"
     public static final String APP_TITLE_LABEL_J_TEST_ID = "appTitleLabel"
 
-    public static final String LDAP_USER_LOGIN = "login"
+    boolean isLocalServer = false
+
+    // LDAP for external server settings by default (isLocalServer = false)
+    public static final String LDAP_USER_LOGIN = "euclid"
     public static final String LDAP_USER_PASSWORD = "password"
+
+    // LDAP for local server settings (isLocalServer = true)
+    public static final String LDAP_USER_LOGIN_LOCAL = "ldapuser"
+    public static final String LDAP_USER_PASSWORD_LOCAL = "11passwd11"
+
 
     @Test
     @DisplayName("Logins as LDAP user")
     void checkLDAP() {
         $j(MainScreen).logout()
-        loginAsCustomUser(LDAP_USER_LOGIN, LDAP_USER_PASSWORD)
+        if (isLocalServer) {
+            loginAsCustomUser(LDAP_USER_LOGIN_LOCAL, LDAP_USER_PASSWORD_LOCAL)
+        } else {
+            loginAsCustomUser(LDAP_USER_LOGIN, LDAP_USER_PASSWORD)
+        }
         $j(Label, APP_TITLE_LABEL_J_TEST_ID)
                 .shouldBe(VISIBLE)
                 .shouldHave(value(APPLICATION_NAME))

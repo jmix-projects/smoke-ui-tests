@@ -7,6 +7,13 @@
 Based on [Sample Sales project](https://github.com/jmix-projects/sample-sales-jmix)
 
 ---------------------------
+### To verify LDAP, the external server parameters are used by default
+If checking via an external server does not work:
+1. Open **application.properties**
+2. Uncomment block `LDAP for local server settings`
+3. Comment out block `LDAP for external server settings`
+4. Set to **LDAPSmokeUITest.groovy** value `isLocalServer = true`.
+5. Follow the instructions below
 
 ### Instructions for Apache Directory Studio installing if it has not been installed yet
 1. Download [here](http://directory.apache.org/studio/) and install Apache Directory Studio
