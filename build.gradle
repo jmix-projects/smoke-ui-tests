@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '1.4.2'
+    id 'io.jmix' version '1.5.0-RC1'
     id 'java'
     id 'groovy'
 }
@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.4.2'
+    bomVersion = '1.5.0-RC1'
     projectId = 'sales'
 }
 
@@ -120,6 +120,7 @@ dependencies {
     implementation 'io.jmix.notifications:jmix-notifications-ui-starter'
 
     implementation 'io.jmix.quartz:jmix-quartz-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-ui-starter'
 
     implementation 'io.jmix.appsettings:jmix-appsettings-starter'
     implementation 'io.jmix.appsettings:jmix-appsettings-ui-starter'
