@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '1.5.0-RC1'
+    id 'io.jmix' version '1.5.0'
     id 'java'
     id 'groovy'
 }
@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.5.0-RC1'
+    bomVersion = '1.5.0'
     projectId = 'sales'
 }
 
@@ -23,8 +23,8 @@ repositories {
     maven {
         url 'https://nexus.jmix.io/repository/premium'
         credentials {
-            username rootProject['premiumRepoUser']
-            password rootProject['premiumRepoPass']
+            username = rootProject['premiumRepoUser']
+            password = rootProject['premiumRepoPass']
         }
     }
 }
@@ -83,7 +83,7 @@ dependencies {
     widgets "io.jmix.maps:jmix-maps-ui-widgets"
     implementation "io.jmix.maps:jmix-maps-starter"
 
-    implementation "io.jmix.ui:jmix-ui-export-starter"
+    implementation "io.jmix.gridexport:jmix-gridexport-ui-starter"
 
     implementation "io.jmix.bpm:jmix-bpm-starter"
     implementation "io.jmix.bpm:jmix-bpm-ui-starter"
@@ -102,7 +102,8 @@ dependencies {
 
     implementation "io.jmix.translations:jmix-translations-ru"
 
-    implementation "io.jmix.grapesjs:jmix-grapesjs-starter"
+    implementation "io.jmix.grapesjs:jmix-grapesjs-ui"
+    implementation "io.jmix.grapesjs:jmix-grapesjs-ui-starter"
 
     implementation "io.jmix.email:jmix-email-starter"
     implementation "io.jmix.email:jmix-email-ui-starter"
