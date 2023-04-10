@@ -11,21 +11,32 @@ import org.junit.jupiter.api.Test
 import static io.jmix.masquerade.Selectors.$j
 
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
+
+    def DEFAULT_LOCAL = "English"
+    def LANGUAGES = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "کوردی"] as ArrayList
+
     @Test
     @DisplayName("Translations smoke test")
     void checkTranslations() {
         $j(MainScreen).logout()
-        loginAsAdminRus()
-        maximizeWindowSize()
+        LANGUAGES.each { String language ->
 
-        $j(MainScreen).openReportsBrowse()
-        Selenide.sleep(2000)
-        $j(MainScreen).openResourceRoleBrowse()
-        Selenide.sleep(2000)
-        $j(MainScreen).openModelerScreen()
-        Selenide.sleep(2000)
-        $j(MainScreen).openImapConfigurationBrowse()
-        $j(MainScreen).logout()
-        $j(LoginScreen).loginWithLocale('English')
+            if (language == "کوردی") println('======= ' + 'Kurdish ckb ' + language + ' =======')
+            //  else if (language == "中文简体") println('======= ' + 'Chinese zh_CN ' + language + ' =======')
+            else println('======= ' + language + ' =======')
+
+            loginAsAdminLanguage(language)
+            maximizeWindowSize()
+
+            $j(MainScreen).openReportsBrowse()
+            Selenide.sleep(2000)
+            $j(MainScreen).openResourceRoleBrowse()
+            Selenide.sleep(2000)
+            $j(MainScreen).openModelerScreen()
+            Selenide.sleep(2000)
+            $j(MainScreen).openImapConfigurationBrowse()
+            $j(MainScreen).logout()
+        }
+        $j(LoginScreen).loginWithLocale(DEFAULT_LOCAL)
     }
 }

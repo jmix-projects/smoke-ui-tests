@@ -24,19 +24,11 @@ abstract class BaseUiTest {
     }
 
     /**
-     * Login as Administrator with Russian locale
+     * Login as Administrator with any locale
      */
-    static void loginAsAdminRus() {
+    static void loginAsAdminLanguage(String locate) {
         Selenide.open('/')
-        $j(LoginScreen).loginWithLocale('Russian')
-    }
-
-    /**
-     * Login as Administrator with English locale
-     */
-    static void loginAsAdminEn() {
-        Selenide.open('/')
-        $j(LoginScreen).loginWithLocale('English')
+        $j(LoginScreen).loginWithLocale(locate)
     }
 
     /**
@@ -56,7 +48,7 @@ abstract class BaseUiTest {
      */
     @BeforeAll
     static void beforeAll() {
-        loginAsAdminEn()
+        loginAsAdminLanguage('English')
         maximizeWindowSize()
     }
 

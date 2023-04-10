@@ -134,14 +134,22 @@ dependencies {
     implementation 'io.jmix.rest:jmix-rest-starter'
     implementation 'io.jmix.security:jmix-security-oauth2-starter'
 
-    implementation 'io.jmix.translations:jmix-translations-ru'
-
     implementation 'io.jmix.search:jmix-search-ui-starter'
     implementation 'io.jmix.search:jmix-search-starter'
 
     implementation 'io.jmix.webdav:jmix-webdav-ui-starter'
     implementation 'io.jmix.webdav:jmix-webdav-rest-starter'
     implementation 'io.jmix.webdav:jmix-webdav-starter'
+
+    implementation 'io.jmix.translations:jmix-translations-nl'
+    implementation 'io.jmix.translations:jmix-translations-fr'
+    implementation 'io.jmix.translations:jmix-translations-el'
+    implementation 'io.jmix.translations:jmix-translations-ckb'
+    implementation 'io.jmix.translations:jmix-translations-de'
+    implementation 'io.jmix.translations:jmix-translations-ru'
+    implementation 'io.jmix.translations:jmix-translations-ro'
+    implementation 'io.jmix.translations:jmix-translations-zh-cn'
+
 
 }
 
