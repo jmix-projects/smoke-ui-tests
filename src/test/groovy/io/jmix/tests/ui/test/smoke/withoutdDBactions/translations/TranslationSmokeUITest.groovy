@@ -12,20 +12,18 @@ import static io.jmix.masquerade.Selectors.$j
 
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
-    def DEFAULT_LOCAL = "English"
-    def LANGUAGES = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "کوردی"] as ArrayList
+    def DEFAULT_LOCALE = "English"
+    def LANGUAGES = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "Central Kurdish"] as ArrayList
+    //"中文简体","کوردی"
 
     @Test
     @DisplayName("Translations smoke test")
     void checkTranslations() {
         $j(MainScreen).logout()
         LANGUAGES.each { String language ->
+            println('======= ' + language + ' =======')
 
-            if (language == "کوردی") println('======= ' + 'Kurdish ckb ' + language + ' =======')
-            //  else if (language == "中文简体") println('======= ' + 'Chinese zh_CN ' + language + ' =======')
-            else println('======= ' + language + ' =======')
-
-            loginAsAdminLanguage(language)
+            loginAsAdminWithLanguage(language)
             maximizeWindowSize()
 
             $j(MainScreen).openReportsBrowse()
@@ -37,6 +35,6 @@ class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
             $j(MainScreen).openImapConfigurationBrowse()
             $j(MainScreen).logout()
         }
-        $j(LoginScreen).loginWithLocale(DEFAULT_LOCAL)
+        $j(LoginScreen).loginWithLocale(DEFAULT_LOCALE)
     }
 }
