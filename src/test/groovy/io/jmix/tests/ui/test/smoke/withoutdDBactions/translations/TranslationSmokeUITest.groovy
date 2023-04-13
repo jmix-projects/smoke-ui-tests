@@ -5,23 +5,20 @@ import io.jmix.tests.ui.screen.system.login.LoginScreen
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.helpers.UiHelper
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 import static io.jmix.masquerade.Selectors.$j
 
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
     def DEFAULT_LOCALE = "English"
-    def LANGUAGES = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "Central Kurdish"] as ArrayList
-    //"中文简体","کوردی"
 
-    @Test
-    @DisplayName("Translations smoke test")
-    void checkTranslations() {
+    @ParameterizedTest(name = "{index} Translations smoke test - {0}")
+    @ValueSource(strings = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "Central Kurdish", "English"])
+    void checkTranslations(String language) {
         $j(MainScreen).logout()
-        LANGUAGES.each { String language ->
-            println('======= ' + language + ' =======')
+        if (language != DEFAULT_LOCALE) {
 
             loginAsAdminWithLanguage(language)
             maximizeWindowSize()
