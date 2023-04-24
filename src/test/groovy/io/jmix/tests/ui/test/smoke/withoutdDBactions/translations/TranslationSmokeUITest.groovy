@@ -23,9 +23,26 @@ class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
         loginAsAdminWithLanguage(language)
         $j(MainScreen).getSideMenu().openItem('bpm', 'bpm_StartProcessScreen')
         $j(Button.class, 'refreshBtn').shouldBe(VISIBLE)
-                .shouldHave(caption(getTranslateAttributeValue(language, 'refreshBtn')))
-        Selenide.sleep(2000)
+                .shouldHave(caption(getTranslatedAttributeValue(language, 'refreshBtn')))
         $j(MainScreen).logout()
+    }
+
+    static String getTranslatedAttributeValue(language, attribute) {
+
+        def nums = []
+
+        switch (language) {
+            case 'Russian': nums = ['refreshBtn': 'Обновить']; break
+            case 'Dutch': nums = ['refreshBtn': 'Verversen']; break
+            case 'French': nums = ['refreshBtn': 'Rafraîchir']; break
+            case 'Greek': nums = ['refreshBtn': 'Ανανέωση']; break
+            case 'German': nums = ['refreshBtn': 'Aktualisieren']; break
+            case 'Romanian': nums = ['refreshBtn': 'Actualizare']; break
+            case 'Chinese (China)': nums = ['refreshBtn': '刷新']; break
+            case 'English': nums = ['refreshBtn': 'Refresh']; break
+            case 'Central Kurdish': nums = ['refreshBtn': 'بوژاندنەوە']
+        }
+        return nums[attribute]
     }
 
     @Override
@@ -35,30 +52,5 @@ class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
     @Override
     static void logoutAfterAll() {
-    }
-
-    static String getTranslateAttributeValue(language, attribute) {
-
-        def nums = []
-        if (language == 'Russian') {
-            nums = ['refreshBtn': 'Обновить']
-        } else if (language == 'Dutch') {
-            nums = ['refreshBtn': 'Verversen']
-        } else if (language == 'French') {
-            nums = ['refreshBtn': 'Rafraîchir']
-        } else if (language == 'Greek') {
-            nums = ['refreshBtn': 'Ανανέωση']
-        } else if (language == 'German') {
-            nums = ['refreshBtn': 'Aktualisieren']
-        } else if (language == 'Romanian') {
-            nums = ['refreshBtn': 'Actualizare']
-        } else if (language == 'Chinese (China)') {
-            nums = ['refreshBtn': '刷新']
-        } else if (language == 'English') {
-            nums = ['refreshBtn': 'Refresh']
-        } else if (language == 'Central Kurdish') {
-            nums = ['refreshBtn': 'بوژاندنەوە']
-        }
-        return nums[attribute]
     }
 }
