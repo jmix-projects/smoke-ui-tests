@@ -26,9 +26,9 @@ abstract class BaseUiTest {
     /**
      * Login as Administrator with any locale
      */
-    static void loginAsAdminLanguage(String locate) {
+    static void loginAsAdminWithLanguage(String locale) {
         Selenide.open('/')
-        $j(LoginScreen).loginWithLocale(locate)
+        $j(LoginScreen).loginWithLocale(locale)
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class BaseUiTest {
      */
     @BeforeAll
     static void beforeAll() {
-        loginAsAdminLanguage('English')
+        loginAsAdminWithLanguage('English')
         maximizeWindowSize()
     }
 
