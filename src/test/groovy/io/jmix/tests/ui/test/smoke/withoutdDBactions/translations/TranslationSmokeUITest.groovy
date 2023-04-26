@@ -5,6 +5,7 @@ import io.jmix.masquerade.component.Button
 import io.jmix.tests.ui.screen.system.main.MainScreen
 import io.jmix.tests.ui.test.BaseUiTest
 import io.jmix.tests.ui.test.utils.helpers.UiHelper
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
@@ -15,39 +16,42 @@ import static io.jmix.masquerade.Selectors.$j
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
     @ParameterizedTest(name = "{index} Translations smoke test - {0}")
-    @ValueSource(strings = ["Russian", "Dutch", "French", "Greek", "German", "Romanian", "Chinese (China)", "Central Kurdish", "English"])
+    @ValueSource(strings = ["English", "Russian", "French", "German", "Italian", "Dutch", "Romanian", "Greek", "Chinese (China)", "Central Kurdish"])
     void checkTranslations(String language) {
-
-        Selenide.open('/')
-
         loginAsAdminWithLanguage(language)
         $j(MainScreen).getSideMenu().openItem('bpm', 'bpm_StartProcessScreen')
         $j(Button.class, 'refreshBtn').shouldBe(VISIBLE)
                 .shouldHave(caption(getTranslatedAttributeValue(language, 'refreshBtn')))
-        $j(MainScreen).logout()
     }
 
     static String getTranslatedAttributeValue(language, attribute) {
 
-        def nums = []
+        def translated = []
 
         switch (language) {
-            case 'Russian': nums = ['refreshBtn': 'Обновить']; break
-            case 'Dutch': nums = ['refreshBtn': 'Verversen']; break
-            case 'French': nums = ['refreshBtn': 'Rafraîchir']; break
-            case 'Greek': nums = ['refreshBtn': 'Ανανέωση']; break
-            case 'German': nums = ['refreshBtn': 'Aktualisieren']; break
-            case 'Romanian': nums = ['refreshBtn': 'Actualizare']; break
-            case 'Chinese (China)': nums = ['refreshBtn': '刷新']; break
-            case 'English': nums = ['refreshBtn': 'Refresh']; break
-            case 'Central Kurdish': nums = ['refreshBtn': 'بوژاندنەوە']
+            case 'English': translated = ['refreshBtn': 'Refresh']; break
+            case 'Russian': translated = ['refreshBtn': 'Обновить']; break
+            case 'French': translated = ['refreshBtn': 'Rafraîchir']; break
+            case 'German': translated = ['refreshBtn': 'Aktualisieren']; break
+            case 'Italian': translated = ['refreshBtn': 'Aggiorna']; break
+            case 'Dutch': translated = ['refreshBtn': 'Verversen']; break
+            case 'Romanian': translated = ['refreshBtn': 'Actualizare']; break
+            case 'Greek': translated = ['refreshBtn': 'Ανανέωση']; break
+            case 'Chinese (China)': translated = ['refreshBtn': '刷新']; break
+            case 'Central Kurdish': translated = ['refreshBtn': 'بوژاندنەوە']
         }
-        return nums[attribute]
+        return translated[attribute]
     }
 
     @Override
     static void beforeAll() {
         maximizeWindowSize()
+        Selenide.open('/')
+    }
+
+    @AfterEach
+    void logoutAfterEach() {
+        $j(MainScreen).logout()
     }
 
     @Override

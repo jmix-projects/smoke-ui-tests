@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.5.1'
+    bomVersion = '1.5.999-SNAPSHOT'
     projectId = 'sales'
 }
 
@@ -143,6 +143,7 @@ dependencies {
 
     implementation 'io.jmix.translations:jmix-translations-nl'
     implementation 'io.jmix.translations:jmix-translations-fr'
+    implementation 'io.jmix.translations:jmix-translations-it'
     implementation 'io.jmix.translations:jmix-translations-el'
     implementation 'io.jmix.translations:jmix-translations-ckb'
     implementation 'io.jmix.translations:jmix-translations-de'
