@@ -15,56 +15,20 @@ group = 'com.company'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
+    // def repository = 'nexus.jmix.io'
+    // def repository = 'eu-central-1.repo.jmix.io'
+    // def repository = 'us-east-1.repo.jmix.io'
     mavenCentral()
-
-    /*
     maven {
-         url 'https://global.repo.jmix.io/repository/public'
-     }
-     maven {
-         url 'https://global.repo.jmix.io/repository/premium'
-         credentials {
-             username = rootProject['premiumRepoUser']
-             password = rootProject['premiumRepoPass']
-         }
-     }
-    */
-    /*
-       maven {
-           url 'https://nexus.jmix.io/repository/public'
-       }
-       maven {
-           url 'https://nexus.jmix.io/repository/premium'
-           credentials {
-               username = rootProject['premiumRepoUser']
-               password = rootProject['premiumRepoPass']
-           }
-       }
-   */
-    /*
-       maven {
-           url 'https://eu-central-1.repo.jmix.io/repository/public'
-       }
-       maven {
-           url 'https://eu-central-1.repo.jmix.io/repository/premium'
-           credentials {
-               username = rootProject['premiumRepoUser']
-               password = rootProject['premiumRepoPass']
-           }
-       }
-   */
-    /*
-       maven {
-           url 'https://us-east-1.repo.jmix.io/repository/public'
-       }
-       maven {
-           url 'https://us-east-1.repo.jmix.io/repository/premium'
-           credentials {
-               username = rootProject['premiumRepoUser']
-               password = rootProject['premiumRepoPass']
-           }
-       }
-    */
+        url "https://${repository}/repository/public"
+    }
+    maven {
+        url = "https://${repository}/repository/premium"
+        credentials {
+            username = rootProject['premiumRepoUser']
+            password = rootProject['premiumRepoPass']
+        }
+    }
 }
 
 dependencies {
