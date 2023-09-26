@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '1.5.3'
+    id 'io.jmix' version '1.5.4'
     id 'java'
     id 'groovy'
 }
@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.5.3'
+    bomVersion = '1.5.4'
     projectId = 'sales'
 }
 
@@ -59,7 +59,7 @@ dependencies {
     }
     testImplementation "io.jmix.masquerade:jmix-masquerade:1.2.0"
 
-    testImplementation 'com.codeborne:selenide:6.12.4'
+    testImplementation 'com.codeborne:selenide:6.18.0'
     testImplementation 'org.codehaus.groovy:groovy:3.0.10'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
 
@@ -74,6 +74,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     testRuntimeOnly 'org.postgresql:postgresql:42.3.8'
 
+    /*
     implementation 'io.jmix.appsettings:jmix-appsettings-starter'
     implementation 'io.jmix.appsettings:jmix-appsettings-ui-starter'
 
@@ -152,6 +153,7 @@ dependencies {
     implementation 'io.jmix.translations:jmix-translations-ru'
     implementation 'io.jmix.translations:jmix-translations-ro'
     implementation 'io.jmix.translations:jmix-translations-zh-cn'
+    */
 
 
 }
