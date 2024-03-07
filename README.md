@@ -8,10 +8,9 @@ Based on [Sample Sales project](https://github.com/jmix-projects/sample-sales-jm
 
 ---------------------------
 
-If testing LDAP functionality will be done using an external LDAP server, then the instructions for setting up Apache Directory Studio should be skipped.
-As login/password, you should use the default settings specified in the LDAPSmokeUITest class:
-isLocalServer = false,
-login "euclid", password "password".
+If testing LDAP functionality will be done using an external LDAP server,
+then the instructions for setting up Apache Directory Studio should be skipped.
+As login/password use the default settings specified in the LDAPSmokeUITest.groovy class.
 
 ### To verify LDAP, the external server parameters are used by default
 If checking via an external server does not work:
