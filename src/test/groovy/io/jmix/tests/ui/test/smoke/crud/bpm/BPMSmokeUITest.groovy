@@ -1,5 +1,6 @@
 package io.jmix.tests.ui.test.smoke.crud.bpm
 
+import io.jmix.tests.ui.screen.system.dialog.UnsavedChangesBPMDialog
 import io.jmix.tests.ui.screen.bpm.BPMNModelDraftsBrowser
 import io.jmix.tests.ui.screen.bpm.ModelerScreen
 import io.jmix.tests.ui.screen.bpm.ProcessDefinitionBrowse
@@ -42,6 +43,8 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(startProcessBtn)
             clickButton(startProcessBtnDialog)
         }
+
+        discardUnsavedChanges()
     }
 
     @Test
@@ -59,6 +62,8 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
             checkButtons(ENABLED)
             clickButton(openInModelerBtn)
         }
+
+        discardUnsavedChanges()
 
         $j(ModelerScreen).with {
             checkModelerIsDisplayed()
@@ -87,6 +92,8 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
         $j(ProcessDefinitionBrowse).with {
             checkRecordIsDisplayed(PROCESS_BASE_ID)
         }
+
+        discardUnsavedChanges()
     }
 
     @Test
@@ -105,6 +112,8 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
             clickButton(deleteDeploymentBtn)
             clickYesInAConfirmationDialog()
         }
+
+        discardUnsavedChanges()
     }
 
     def createAndDeployProcess() {
@@ -114,5 +123,16 @@ class BPMSmokeUITest extends BaseUiTest implements UiHelper {
         }
 
         clickYesInAConfirmationDialog()
+    }
+
+    static def discardUnsavedChanges() {
+        $j(ProcessDefinitionBrowse).with {
+            closeTab()
+            $j(UnsavedChangesBPMDialog).with {
+                if (doNotSave.is(VISIBLE)) {
+                    doNotSave.click()
+                }
+            }
+        }
     }
 }
