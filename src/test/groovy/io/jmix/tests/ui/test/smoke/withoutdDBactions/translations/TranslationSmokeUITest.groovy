@@ -16,7 +16,7 @@ import static io.jmix.masquerade.Selectors.$j
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
     @ParameterizedTest(name = "{index} Translations smoke test - {0}")
-    @ValueSource(strings = ["English", "Russian", "French", "German", "Italian", "Dutch", "Romanian", "Greek", "Chinese (China)", "Central Kurdish"])
+    @ValueSource(strings = ["English", "Русский", "Français", "Nederlands", "итальянский", "Deutsch", "румынский", "Ελληνικά", "中文简体", "کوردی"])
     void checkTranslations(String language) {
         loginAsAdminWithLanguage(language)
         $j(MainScreen).getSideMenu().openItem('bpm', 'bpm_StartProcessScreen')
@@ -30,15 +30,15 @@ class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
         switch (language) {
             case 'English': translated = ['refreshBtn': 'Refresh']; break
-            case 'Russian': translated = ['refreshBtn': 'Обновить']; break
-            case 'French': translated = ['refreshBtn': 'Rafraîchir']; break
-            case 'German': translated = ['refreshBtn': 'Aktualisieren']; break
-            case 'Italian': translated = ['refreshBtn': 'Aggiorna']; break
-            case 'Dutch': translated = ['refreshBtn': 'Verversen']; break
-            case 'Romanian': translated = ['refreshBtn': 'Actualizare']; break
-            case 'Greek': translated = ['refreshBtn': 'Ανανέωση']; break
-            case 'Chinese (China)': translated = ['refreshBtn': '刷新']; break
-            case 'Central Kurdish': translated = ['refreshBtn': 'بوژاندنەوە']
+            case 'Русский': translated = ['refreshBtn': 'Обновить']; break
+            case 'Français': translated = ['refreshBtn': 'Rafraîchir']; break
+            case 'Deutsch': translated = ['refreshBtn': 'Aktualisieren']; break
+            case 'итальянский': translated = ['refreshBtn': 'Aggiorna']; break
+            case 'Nederlands': translated = ['refreshBtn': 'Verversen']; break
+            case 'румынский': translated = ['refreshBtn': 'Actualizare']; break
+            case 'Ελληνικά': translated = ['refreshBtn': 'Ανανέωση']; break
+            case '中文简体': translated = ['refreshBtn': '刷新']; break
+            case 'کوردی': translated = ['refreshBtn': 'بوژاندنەوە']
         }
         return translated[attribute]
     }
