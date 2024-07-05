@@ -9,7 +9,7 @@ class TestContextInitializer implements ApplicationContextInitializer<Configurab
     @Override
     void initialize(ConfigurableApplicationContext applicationContext) {
         TestPropertyValues.of(
-                "main.datasource.jdbcUrl=jdbc:tc:postgresql:9.6.12:///postgres-test-db",
+                "main.datasource.url=jdbc:tc:postgresql:9.6.12:///postgres-test-db",
                 "main.datasource.username=test",
                 "main.datasource.password=pass",
                 "jmix.data.dbmsType=postgres",
