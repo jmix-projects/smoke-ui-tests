@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '1.5.4'
+    id 'io.jmix' version '1.5.5'
     id 'java'
     id 'groovy'
 }
@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.5.4'
+    bomVersion = '1.5.5'
     projectId = 'sales'
 }
 
