@@ -1,5 +1,6 @@
 package io.jmix.tests.ui.test.smoke.externalservices.imap
 
+import com.company.samplesales.constants.Constants
 import io.jmix.tests.ui.screen.imap.ImapConfigurationBrowse
 import io.jmix.tests.ui.screen.imap.ImapConfigurationEditor
 import io.jmix.tests.ui.screen.system.main.MainScreen
@@ -14,12 +15,8 @@ import static io.jmix.masquerade.Conditions.VISIBLE
 import static io.jmix.masquerade.Selectors.$j
 
 class IMAPSmokeUITest extends BaseUiTest implements UiHelper {
+
     public static final String IMAP_CONFIG_TABLE_J_TEST_ID = "mailBoxesTable"
-    public static final String IMAP_CONFIGURATION_NAME = "Haulmont test"
-    public static final String IMAP_HOST = "host"
-    public static final String IMAP_PORT = "port"
-    public static final String IMAP_USERNAME = "username"
-    public static final String IMAP_PASSWORD = "password"
     public static final String IMAP_SUCCESS_CONNECT_NOTIFICATION_TEXT = "Connection is successfully established"
 
     @Test
@@ -34,11 +31,11 @@ class IMAPSmokeUITest extends BaseUiTest implements UiHelper {
             [name, host, username, password].each {
                 it.shouldBe(VISIBLE, EDITABLE, REQUIRED)
             }
-            fillTextField(name, IMAP_CONFIGURATION_NAME)
-            fillTextField(host, IMAP_HOST)
-            fillTextField(port, IMAP_PORT)
-            fillTextField(username, IMAP_USERNAME)
-            fillTextField(password, IMAP_PASSWORD)
+            fillTextField(name, Constants.IMAP_CONFIGURATION_NAME)
+            fillTextField(host, Constants.IMAP_HOST)
+            fillTextField(port, Constants.IMAP_PORT)
+            fillTextField(username, Constants.IMAP_USERNAME)
+            fillTextField(password, Constants.IMAP_PASSWORD)
             selectSSLTLSecureConnection()
             clickButton(checkConnectionBtn)
             checkNotificationCaption(IMAP_SUCCESS_CONNECT_NOTIFICATION_TEXT)
@@ -48,7 +45,7 @@ class IMAPSmokeUITest extends BaseUiTest implements UiHelper {
         }
 
         $j(ImapConfigurationBrowse).with {
-            checkRecordIsDisplayed(IMAP_CONFIGURATION_NAME, IMAP_CONFIG_TABLE_J_TEST_ID)
+            checkRecordIsDisplayed(Constants.IMAP_CONFIGURATION_NAME, IMAP_CONFIG_TABLE_J_TEST_ID)
         }
     }
 }

@@ -2,6 +2,7 @@ package io.jmix.tests.ui.test.smoke.externalservices.emailsending
 
 import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.SelenideElement
+import com.company.samplesales.constants.Constants
 import io.jmix.tests.ui.screen.addonscreen.email.EmailSendingScreen
 import io.jmix.tests.ui.screen.administration.emailhistory.EmailHistoryBrowse
 import io.jmix.tests.ui.screen.administration.emailhistory.dialog.EmailAttachmentDownloadDialog
@@ -34,9 +35,6 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
     public static final String MULTI_ATTACHMENTS_STRING = 'DownloadMultiAttach'
     public static final String EMAIL_ATTACH_PNG = "emailAttach.png;"
     public static final String TEST_PNG = "test.png"
-    public static final String TEST_BCC_EMAIL_ADDRESS = "username@haulmont.com"
-    public static final String TEST_CC_EMAIL_ADDRESS = "username@haulmont.com"
-    public static final String TEST_TO_EMAIL_ADDRESS = "username@haulmont.com"
     public static final String MULTI_ATTACHMENT_STRING = 'emailAttach.png;test.png;'
 
     @Test
@@ -117,14 +115,15 @@ class EmailSendingSmokeUITest extends BaseUiTest implements UiHelper {
             selectRowInTableByText(emailSubject, SENDING_MESSAGE_TABLE_J_TEST_ID)
             clickButton(resendEmailBtn)
             $j(EmailResendDialog).with {
-                checkFilledTextField(emailTextField, TEST_TO_EMAIL_ADDRESS)
-                checkFilledTextField(ccTextField, TEST_CC_EMAIL_ADDRESS)
-                checkFilledTextField(bccTextField, TEST_BCC_EMAIL_ADDRESS)
+                checkFilledTextField(emailTextField, Constants.TEST_TO_EMAIL_ADDRESS)
+                checkFilledTextField(ccTextField, Constants.TEST_CC_EMAIL_ADDRESS)
+                checkFilledTextField(bccTextField, Constants.TEST_BCC_EMAIL_ADDRESS)
                 clickButton(resendEmailBtn)
             }
+            Selenide.sleep(10000)
             checkNotificationCaptionAndDescription("Sent!", "Message was successfully resent")
-            Selenide.sleep(3000)
             clickRefreshFilterButton()
+            Selenide.sleep(1000)
             checkRecordCount(emailSubject, SENT_STATUS, SENDING_MESSAGE_TABLE_J_TEST_ID, 2)
         }
     }
