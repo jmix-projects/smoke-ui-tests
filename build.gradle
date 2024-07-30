@@ -72,7 +72,7 @@ dependencies {
     }
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testRuntimeOnly 'org.postgresql:postgresql:42.3.8'
+    testRuntimeOnly 'org.postgresql:postgresql:42.7.3'
 
     /*
     implementation 'io.jmix.appsettings:jmix-appsettings-starter'
