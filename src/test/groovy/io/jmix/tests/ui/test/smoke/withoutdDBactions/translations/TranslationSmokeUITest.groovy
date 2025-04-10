@@ -16,7 +16,7 @@ import static io.jmix.masquerade.Selectors.$j
 class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
 
     @ParameterizedTest(name = "{index} Translations smoke test - {0}")
-    @ValueSource(strings = ["English", "Русский", "Français", "Nederlands", "итальянский", "Deutsch", "румынский", "Ελληνικά", "中文简体", "کوردی"])
+    @ValueSource(strings = ["English", "Русский", "Français", "Nederlands", "Italiano", "Deutsch", "Română", "Ελληνικά", "中文简体", "کوردی"])
     void checkTranslations(String language) {
         loginAsAdminWithLanguage(language)
         $j(MainScreen).getSideMenu().openItem('bpm', 'bpm_StartProcessScreen')
@@ -33,9 +33,9 @@ class TranslationSmokeUITest extends BaseUiTest implements UiHelper {
             case 'Русский': translated = ['refreshBtn': 'Обновить']; break
             case 'Français': translated = ['refreshBtn': 'Rafraîchir']; break
             case 'Deutsch': translated = ['refreshBtn': 'Aktualisieren']; break
-            case 'итальянский': translated = ['refreshBtn': 'Aggiorna']; break
+            case 'Italiano': translated = ['refreshBtn': 'Aggiorna']; break
             case 'Nederlands': translated = ['refreshBtn': 'Verversen']; break
-            case 'румынский': translated = ['refreshBtn': 'Actualizare']; break
+            case 'Română': translated = ['refreshBtn': 'Actualizare']; break
             case 'Ελληνικά': translated = ['refreshBtn': 'Ανανέωση']; break
             case '中文简体': translated = ['refreshBtn': '刷新']; break
             case 'کوردی': translated = ['refreshBtn': 'بوژاندنەوە']
